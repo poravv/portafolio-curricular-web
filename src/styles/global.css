@@ -1,0 +1,116 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg-base text-text-primary font-body;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Skip to content */
+  .skip-to-content {
+    @apply absolute -top-full left-4 z-[100] rounded-md bg-primary px-4 py-2 text-white transition-all focus:top-4;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-deep;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-bg-glass backdrop-blur-xl border border-border-glass rounded-2xl shadow-glass;
+  }
+
+  .glass-nav {
+    @apply bg-bg-glass/80 backdrop-blur-xl border-b border-border;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-primary to-secondary;
+  }
+
+  .glow-border {
+    @apply border border-border-glass hover:border-primary/30 transition-colors duration-250;
+  }
+
+  .section-padding {
+    @apply py-section-mobile md:py-section;
+  }
+
+  .container-padding {
+    @apply px-4 md:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-in {
+    animation-fill-mode: both;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Light mode overrides */
+:root:not(.dark) body {
+  @apply bg-white text-slate-900;
+}
+
+:root:not(.dark) .glass-card {
+  @apply bg-white/70 border-slate-200 shadow-lg;
+}
+
+:root:not(.dark) .glass-nav {
+  @apply bg-white/80 border-slate-200;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+:root:not(.dark) ::selection {
+  @apply bg-primary/20 text-slate-900;
+}
+
+:root:not(.dark) .gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-dark via-primary to-secondary;
+}

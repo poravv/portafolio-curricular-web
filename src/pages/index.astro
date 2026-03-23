@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPortfolio } from '../lib/portfolio';
+import Navbar from '../components/astro/Navbar.astro';
+import Hero from '../components/react/Hero.tsx';
+import About from '../components/react/About.tsx';
+import Experience from '../components/react/Experience.tsx';
+import Skills from '../components/react/Skills.tsx';
+import Projects from '../components/react/Projects.tsx';
+import Education from '../components/react/Education.tsx';
+import Contact from '../components/react/Contact.tsx';
+import Footer from '../components/astro/Footer.astro';
+
+const portfolio = getPortfolio();
+---
+
+<Layout>
+  <Navbar />
+  <main id="main-content">
+    <Hero client:load profile={portfolio.profile} />
+    <About client:visible profile={portfolio.profile} experience={portfolio.experience} projects={portfolio.projects} />
+    <Experience client:visible experience={portfolio.experience} />
+    <Skills client:visible skills={portfolio.skills} />
+    <Projects client:visible projects={portfolio.projects} />
+    <Education client:visible education={portfolio.education} />
+    <Contact client:visible profile={portfolio.profile} />
+  </main>
+  <Footer profile={portfolio.profile} />
+</Layout>

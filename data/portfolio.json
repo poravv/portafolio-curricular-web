@@ -1,0 +1,1076 @@
+{
+  "profile": {
+    "name": "Andrés Valentín Vera Chávez",
+    "title": "Technical Lead & Full-Stack Developer",
+    "company": "Edge Mobile Ideas",
+    "ownCompany": "MindTech Paraguay (MindTechPy)",
+    "location": "Capiatá, Paraguay",
+    "yearsOfExperience": 11,
+    "contact": {
+      "email": "andyvercha@gmail.com",
+      "businessEmail": "andres.vera@mindtechpy.net",
+      "phone": "(+595) 992 756 462",
+      "whatsapp": "+595 992 756 462",
+      "instagram": "_vienecadames_",
+      "website": "mindtechpy.net",
+      "linkedin": "andrés-valentin-vera-chavez-b3baa6188",
+      "github": "poravv"
+    },
+    "summary": "Cuento con más de 11 años de experiencia como Desarrollador Fullstack y una parte de ella como Technical Lead, tiempo en el que me he especializado y he apoyado en construir soluciones escalables y fáciles de mantener. Tengo un amplio conocimiento en arquitecturas distribuidas y aplico habitualmente principios de Clean Architecture y Arquitectura Hexagonal para asegurar la calidad de cada proyecto."
+  },
+  "experience": [
+    {
+      "id": "edge-mobile-ideas",
+      "company": "Edge Mobile Ideas",
+      "role": "Technical Lead / Fullstack Developer",
+      "location": "Paraguay",
+      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/79/d9/9e/79d99eaf-aa8e-2392-781f-a94970a7627b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png",
+      "current": true,
+      "startDate": "2024-03-01",
+      "endDate": null,
+      "description": "Líder técnico en la célula Wallet del equipo de desarrollo de la app Tigo Money. Desarrollo frontend en Flutter y backend con AWS Lambda y Spring Boot Java.",
+      "techStack": [
+        "Flutter",
+        "Dart",
+        "Java",
+        "Spring Boot",
+        "AWS Lambda",
+        "AWS ECS",
+        "AWS CloudWatch",
+        "AWS API Gateway",
+        "Kafka",
+        "Braze",
+        "Firebase",
+        "Node.js",
+        "TypeScript",
+        "Angular",
+        "React",
+        "AWS EC2",
+        "AWS S3",
+        "AWS CloudFormation",
+        "AWS Step Functions",
+        "AWS EventBridge",
+        "AWS SQS",
+        "MongoDB",
+        "DynamoDB",
+        "Redis",
+        "GitHub Actions",
+        "GitLab CI"
+      ],
+      "notableProject": {
+        "name": "Tigo Money Lending Platform",
+        "client": "Tigo Money / Millicom MFS",
+        "description": "Plataforma de préstamos serverless para Tigo Money"
+      },
+      "achievements": [
+        "Liderazgo técnico del equipo de desarrollo de la app Tigo Money",
+        "Optimización de rendimiento y escalabilidad de servicios serverless en AWS",
+        "Diseño de soluciones arquitectónicas para plataformas financieras de alto tráfico"
+      ]
+    },
+    {
+      "id": "mindtechpy",
+      "company": "MindTechPy",
+      "role": "Fullstack Developer / DevOps",
+      "location": "Capiatá, Paraguay",
+      "current": true,
+      "startDate": "2023-01-01",
+      "endDate": null,
+      "description": "Desarrollo de apps móviles híbridas (Android/iOS) con Flutter y Dart. Microservicios y APIs REST con Node.js, Java Spring Boot y Python. Docker y Kubernetes, Nginx, Nginx Proxy Manager y MinIO. Servicios REST (Node.js/React), administración de servidores. Interfaces de visualización con React Flow + ELK layouts.",
+      "products": [
+        "WhatsApp Sender Pro",
+        "SMS Sender Pro"
+      ],
+      "services": [
+        "Desarrollo web",
+        "Aplicaciones móviles",
+        "E-commerce",
+        "Facturación electrónica"
+      ],
+      "clients": [
+        {
+          "name": "Capa",
+          "project": "E-commerce para tienda de ropa"
+        },
+        {
+          "name": "FoxBox (FoxBox)",
+          "project": "Sitio web corporativo para courier internacional"
+        },
+        {
+          "name": "Pequeñas empresas en Paraguay",
+          "project": "Soluciones de software a medida"
+        }
+      ],
+      "notableProjects": []
+    },
+    {
+      "id": "one-srl",
+      "company": "One S.R.L",
+      "role": "Desarrollador de Software",
+      "location": "Paraguay",
+      "current": false,
+      "startDate": "2015-03-01",
+      "endDate": "2024-02-28",
+      "description": "Desarrollo y mantenimiento de sistemas empresariales de misión crítica con PL/SQL sobre bases de datos Oracle. Especialización en procedimientos almacenados, triggers, paquetes y optimización de consultas complejas.",
+      "techStack": [
+        "Oracle",
+        "PL/SQL",
+        "SQL",
+        "Jira",
+        "ETL"
+      ],
+      "responsibilities": [
+        "Desarrollo de procedimientos almacenados, triggers y paquetes PL/SQL",
+        "Migraciones de bases de datos a gran escala y optimización de procesos ETL",
+        "Diseño lógico y físico de estructuras de datos",
+        "Relevamiento de requerimientos y documentación técnica",
+        "Soporte a usuarios y resolución de incidencias con Jira y metodologías ágiles"
+      ],
+      "achievements": [
+        "Casi 9 años de experiencia en sistemas empresariales de misión crítica",
+        "Liderazgo en migraciones de bases de datos a gran escala",
+        "Optimización de procesos ETL"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": [
+      "Java",
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Dart",
+      "SQL",
+      "Node.js"
+    ],
+    "backendFrameworks": [
+      "Spring Boot 3.x",
+      "NestJS",
+      "Fastify",
+      "Express",
+      "FastAPI"
+    ],
+    "frontendFrameworks": [
+      "React 19",
+      "Next.js",
+      "Angular",
+      "Vite"
+    ],
+    "mobile": [
+      "Flutter",
+      "Expo/React Native",
+      "Capacitor"
+    ],
+    "databases": [
+      "Oracle",
+      "PostgreSQL (+ PostGIS)",
+      "MySQL",
+      "MongoDB",
+      "DynamoDB",
+      "Redis",
+      "Firebase"
+    ],
+    "infrastructure": [
+      "Docker",
+      "Kubernetes",
+      "GitHub Actions CI/CD",
+      "GitLab CI",
+      "GHCR",
+      "Nginx",
+      "Nginx Proxy Manager",
+      "Infrastructure as Code (IaC)",
+      "cert-manager",
+      "Let's Encrypt",
+      "Cloudflare",
+      "cPanel"
+    ],
+    "cloud": [
+      "AWS EC2",
+      "AWS S3",
+      "AWS API Gateway",
+      "AWS CloudFormation",
+      "AWS Lambda",
+      "AWS Step Functions",
+      "AWS EventBridge",
+      "AWS SQS",
+      "Firebase",
+      "AWS ECS",
+      "AWS CloudWatch"
+    ],
+    "aiMl": [
+      "OpenAI Vision",
+      "InsightFace/ArcFace",
+      "MiniFASNet (liveness)",
+      "ONNX Runtime",
+      "MediaPipe"
+    ],
+    "payments": [
+      "Dinelco Checkout (Cybersource/Visa)",
+      "Pagopar"
+    ],
+    "architecture": [
+      "Clean Architecture",
+      "Arquitectura Hexagonal",
+      "Microservices",
+      "Monorepo (Turborepo, pnpm workspaces)"
+    ],
+    "tools": [
+      "Kafka",
+      "Keycloak",
+      "OAuth2",
+      "JWT",
+      "Braze",
+      "Jira",
+      "Scrum"
+    ],
+    "other": [
+      "SIFEN (facturación electrónica Paraguay)",
+      "SOAP/mTLS",
+      "Firmas digitales",
+      "Códigos QR",
+      "Socket.IO",
+      "WebSocket (STOMP)",
+      "BullMQ",
+      "Modbus RTU",
+      "IoT (ESP32)",
+      "React Flow",
+      "ELK layouts"
+    ],
+    "ai": [
+      "Claude Code",
+      "OpenAI",
+      "GitHub Copilot",
+      "Antigravity (Google)"
+    ]
+  },
+  "projects": [
+    {
+      "id": "tigo-money-app",
+      "name": "Tigo Money App",
+      "description": "Aplicación móvil de billetera digital Tigo Money para Paraguay. Desarrollo frontend en Flutter y backend con AWS Lambda y Spring Boot Java en la célula Wallet de Edge Mobile Ideas.",
+      "category": "production",
+      "tier": 1,
+      "techStack": ["Flutter", "Dart", "Java", "Spring Boot", "AWS Lambda", "AWS ECS", "AWS CloudWatch", "AWS API Gateway", "Kafka", "Braze", "Firebase"],
+      "features": [
+        "Billetera digital móvil",
+        "Transferencias y pagos",
+        "Integración con servicios financieros",
+        "Notificaciones push con Braze",
+        "Arquitectura serverless en AWS"
+      ],
+      "status": "production",
+      "url": null,
+      "images": {
+        "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/79/d9/9e/79d99eaf-aa8e-2392-781f-a94970a7627b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2024-03-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "App de billetera digital líder en Paraguay",
+        "Arquitectura serverless de alto rendimiento con AWS"
+      ],
+      "architecture": "Serverless (AWS Lambda + Spring Boot)"
+    },
+    {
+      "id": "foxbox",
+      "name": "FoxBox",
+      "description": "Sitio web corporativo para FoxBox (FoxBox), servicio de courier internacional y casillero virtual. Importación de paquetes desde Miami, China, España y Argentina a Paraguay con seguimiento 24/7.",
+      "category": "production",
+      "tier": 1,
+      "techStack": ["Node.js", "Express", "HTML", "CSS", "JavaScript"],
+      "features": [
+        "Sitio web corporativo responsive",
+        "Información de rutas y tarifas",
+        "Seguimiento de paquetes",
+        "Múltiples sucursales en Paraguay"
+      ],
+      "status": "production",
+      "url": "https://foxbox.com.py/",
+      "images": {
+        "logo": "https://foxbox.com.py/images/logo.png?v=1771680157",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2024-01-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "Sitio web para courier internacional con presencia en todo Paraguay"
+      ],
+      "architecture": "Web corporativa"
+    },
+    {
+      "id": "whatsapp-sender",
+      "name": "WhatsApp Sender",
+      "description": "Plataforma web de envío masivo de mensajes por WhatsApp para empresas. Herramienta de marketing y comunicación desarrollada con MindTechPy.",
+      "category": "production",
+      "tier": 1,
+      "techStack": ["Node.js", "React", "Baileys"],
+      "features": [
+        "Envío masivo de WhatsApp",
+        "Chatbot integrado",
+        "Gestión de contactos",
+        "Plantillas de mensajes",
+        "Panel de administración"
+      ],
+      "status": "production",
+      "url": "https://sender.mindtechpy.net/",
+      "images": {
+        "logo": "https://static.whatsapp.net/rsrc.php/yY/r/_mMwO8HKa4V.svg",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2023-06-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "Herramienta de marketing masivo por WhatsApp para empresas"
+      ],
+      "architecture": "Full-stack"
+    },
+    {
+      "id": "cuenly",
+      "name": "CuenlyApp",
+      "description": "SaaS con funcionalidades de IA para extracción de facturas y sistema de suscripciones con Pagopar. Incluye historial de transacciones y límites por plan.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "Python",
+        "Angular",
+        "OpenAI Vision",
+        "Pagopar"
+      ],
+      "features": [
+        "Extracción de facturas con IA (OpenAI Vision)",
+        "Sistema de suscripciones con Pagopar",
+        "Historial de transacciones",
+        "Límites de uso por plan"
+      ],
+      "status": "production",
+      "url": "https://app.cuenly.com/",
+      "images": {
+        "logo": "https://app.cuenly.com/assets/logo.png",
+        "hero": "https://cuenly.com/assets/hero/hero-image.png",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2024-08-01",
+        "lastUpdate": "2025-12-01"
+      },
+      "highlights": [
+        "Corrección de bug crítico de facturación: límites de IA se reseteaban sin verificar cobro",
+        "Integración completa con Pagopar para billing recurrente"
+      ],
+      "architecture": "Monolítica con integraciones externas"
+    },
+    {
+      "id": "ecommerce-capa",
+      "name": "E-Commerce Capa",
+      "description": "Plataforma e-commerce completa para la tienda de ropa Capa en Paraguay, con gestión de variantes de productos, carrito con Redis, backoffice administrativo, zonas de envío interactivas y localizador de tiendas.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "Java 21",
+        "Spring Boot 3.3.5",
+        "Next.js 16",
+        "React 19",
+        "PostgreSQL 16",
+        "PostGIS",
+        "Redis 7",
+        "Cloudinary",
+        "Docker",
+        "Kubernetes"
+      ],
+      "features": [
+        "Variantes de productos (talla + color + SKU)",
+        "Carrito de compras con Redis",
+        "Autenticación JWT",
+        "Backoffice administrativo",
+        "Registro con OTP",
+        "Zonas de envío con mapa interactivo (18 departamentos)",
+        "Localizador de tiendas (Leaflet + PostGIS)",
+        "WebSocket STOMP para actualizaciones en tiempo real",
+        "Servicio de email SMTP"
+      ],
+      "status": "production",
+      "url": "https://capa.mindtechpy.net",
+      "images": {
+        "logo": "https://capa.mindtechpy.net/logo.png",
+        "icon": "https://capa.mindtechpy.net/icon.png",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "meta": {
+        "title": "Capa | Tienda de Ropa - Moda con Estilo",
+        "description": "Descubrí ropa nueva, segunda mano y accesorios únicos en Capa. Tu tienda de moda en Paraguay con los mejores precios y envíos a todo el país.",
+        "locale": "es_PY"
+      },
+      "timeline": {
+        "startDate": "2024-06-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "Plataforma e-commerce completa con mapa interactivo de envíos y localizador de tiendas",
+        "UI/UX profesional con accesibilidad, dark mode y transiciones de página"
+      ],
+      "architecture": "Layered/DDD"
+    },
+    {
+      "id": "impostor-app",
+      "name": "El Impostor",
+      "description": "Juego multijugador de deducción social (estilo Among Us en formato web y mobile). Comunicación en tiempo real con Socket.IO y soporte multi-plataforma.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "Fastify 5",
+        "Socket.IO 4.7",
+        "Prisma",
+        "PostgreSQL",
+        "Redis",
+        "Next.js",
+        "React 18",
+        "Expo 53",
+        "React Native 0.79",
+        "Firebase Auth",
+        "Turborepo"
+      ],
+      "features": [
+        "Juego multijugador en tiempo real",
+        "Multiplataforma: web + Android",
+        "Autenticación con Firebase",
+        "Socket.IO con adaptador Redis para multi-pod",
+        "Monorepo con Turborepo"
+      ],
+      "status": "production",
+      "url": "https://impostor.mindtechpy.net",
+      "images": {
+        "logo": "https://impostor.mindtechpy.net/mascot.png",
+        "icon": "https://impostor.mindtechpy.net/icon.png",
+        "ogImage": "https://impostor.mindtechpy.net/og.jpg",
+        "screenshots": []
+      },
+      "meta": {
+        "title": "El Impostor | Juego Multijugador",
+        "description": "Un juego de engaño y deducción social. ¿Podrás descubrir al impostor?",
+        "tagline": "Engaño. Deducción. Supervivencia.",
+        "version": "v1.2.0-PROD"
+      },
+      "playStore": "https://play.google.com/store/apps/details?id=net.mindtechpy.impostor",
+      "timeline": {
+        "startDate": "2025-03-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "Cross-platform: web + Android simultáneo",
+        "Multijugador en tiempo real con Socket.IO y Redis adapter"
+      ],
+      "architecture": "Real-time con Redis adapter para multi-pod"
+    },
+    {
+      "id": "punto-venta",
+      "name": "Sistema Punto de Venta",
+      "description": "Sistema de punto de venta para Paraguay con integración SIFEN, gestión de inventario, caja registradora, promociones y cumplimiento fiscal paraguayo (IVA, timbrado, CDC).",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "NestJS 10",
+        "TypeORM",
+        "PostgreSQL",
+        "BullMQ",
+        "Redis",
+        "React 19",
+        "Vite 7",
+        "Zustand",
+        "TanStack Query",
+        "Tailwind",
+        "pnpm"
+      ],
+      "features": [
+        "35 entidades de dominio",
+        "23 páginas de interfaz",
+        "Flujo POS completo + facturación + caja registradora",
+        "Integración con SIFEN",
+        "4 roles: admin, gerencia, ventas, depósito",
+        "Sistema de promociones y cupones",
+        "Gestión de inventario y almacenes",
+        "Reportes de IVA",
+        "Monorepo con pnpm workspaces"
+      ],
+      "status": "beta",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2024-09-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "Migración de autenticación de Keycloak a JWT nativo con NestJS",
+        "Cumplimiento fiscal paraguayo: IVA 5%/10%, PYG, timbrado, CDC"
+      ],
+      "architecture": "Layered/DDD, monorepo"
+    },
+    {
+      "id": "electronico-sifen",
+      "name": "Facturación Electrónica SIFEN",
+      "description": "Middleware multi-cliente de facturación electrónica para el sistema SIFEN de Paraguay. Soporta 5 tipos de documentos electrónicos con firma digital, códigos QR, manejo de contingencia y plantillas PDF personalizables.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "Java 21",
+        "Spring Boot 3.4.3",
+        "JAXB",
+        "Spring WS",
+        "SOAP 1.2",
+        "mTLS",
+        "OpenPDF",
+        "PostgreSQL 15",
+        "Liquibase",
+        "React 19",
+        "Vite"
+      ],
+      "features": [
+        "5 tipos de documentos: factura, notas débito/crédito, autofactura, nota remisión",
+        "Firma digital de documentos",
+        "Generación de códigos QR",
+        "Manejo de contingencia",
+        "Polling por lotes",
+        "Gestión de certificados por cliente",
+        "Plantillas PDF personalizables (KuDE)",
+        "Servicio de email integrado",
+        "Dashboard React + Vite"
+      ],
+      "status": "development",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2024-03-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "Compliance fiscal, aislamiento multi-cliente y control de acceso por roles (RBAC)",
+        "Plantillas PDF personalizables (KuDE) y servicio de email integrado",
+        "Arquitectura hexagonal con aislamiento completo por cliente"
+      ],
+      "architecture": "Hexagonal"
+    },
+    {
+      "id": "biometric-identity-engine",
+      "name": "Motor de Identidad Biométrica",
+      "description": "Plataforma B2B multi-tenant de biometría (alternativa simplificada a FaceTec). Pipeline de reconocimiento facial con IA, detección de vida, y SDKs para mobile y web.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "Java 21",
+        "Spring Boot 3.4.3",
+        "Python 3.11",
+        "FastAPI",
+        "ONNX Runtime",
+        "Flutter",
+        "React",
+        "MediaPipe",
+        "PostgreSQL",
+        "Redis",
+        "MinIO"
+      ],
+      "features": [
+        "Detección de rostros",
+        "Embeddings de 512 dimensiones (ArcFace)",
+        "Detección de vida (MiniFASNet)",
+        "Arquitectura multi-tenant",
+        "Plantillas de documentos (PY, AR, BR)",
+        "Auto-rotación EXIF",
+        "SDK mobile (Flutter)",
+        "SDK web (React + MediaPipe)",
+        "Gateway API (Spring Boot) + Engine IA (FastAPI)"
+      ],
+      "status": "development",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2025-01-01",
+        "lastUpdate": "2026-02-01"
+      },
+      "highlights": [
+        "Pipeline completo de detección, reconocimiento y verificación de vida",
+        "Pipeline de reconocimiento facial potenciado por IA",
+        "Arquitectura de microservicios: gateway Java + engine Python"
+      ],
+      "architecture": "Microservices"
+    },
+    {
+      "id": "streamledger",
+      "name": "StreamLedger",
+      "description": "Plataforma web para gestión de servicios de streaming con control de clientes, suscripciones, pagos, vencimientos y análisis de utilidad neta.",
+      "category": "advanced",
+      "tier": 2,
+      "techStack": [
+        "Node.js",
+        "TypeScript",
+        "Express",
+        "React",
+        "Vite",
+        "PostgreSQL",
+        "Docker",
+        "Kubernetes",
+        "GitHub Actions"
+      ],
+      "features": [
+        "Gestión de suscripciones",
+        "Control de pagos y vencimientos",
+        "Análisis de utilidad neta",
+        "Panel administrativo",
+        "Deploy automatizado en K8s"
+      ],
+      "status": "production",
+      "url": null,
+      "images": {
+        "logo": "https://stream.mindtechpy.net/logo.png",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2024-01-01",
+        "lastUpdate": "2025-06-01"
+      },
+      "highlights": [
+        "Clean architecture con deploy en Kubernetes"
+      ],
+      "architecture": "Clean Architecture"
+    },
+    {
+      "id": "web-mindtechpy",
+      "name": "Web MindTechPy",
+      "description": "Sitio web corporativo de MindTechPy con diseño 'Observatorio Digital' en tema oscuro, modo dual clásico/moderno, showcase de productos y planes de precios.",
+      "category": "advanced",
+      "tier": 2,
+      "techStack": [
+        "Express 4.18",
+        "Webpack 5.88",
+        "SCSS",
+        "Vanilla JS"
+      ],
+      "features": [
+        "Diseño dark-tech 'Observatorio Digital'",
+        "Modo dual: clásico y moderno",
+        "Showcase de productos",
+        "Planes de precios por niveles",
+        "Deploy en Kubernetes vía GHCR"
+      ],
+      "status": "production",
+      "url": "https://mindtechpy.net",
+      "images": {
+        "logo": "https://mindtechpy.net/images/mindtechpy-logo.png",
+        "techIcons": [
+          "https://mindtechpy.net/images/tech/react.png",
+          "https://mindtechpy.net/images/tech/angular.png",
+          "https://mindtechpy.net/images/tech/spring-boot.png",
+          "https://mindtechpy.net/images/tech/flutter.svg",
+          "https://mindtechpy.net/images/tech/docker.png",
+          "https://mindtechpy.net/images/tech/kubernetes.svg",
+          "https://mindtechpy.net/images/tech/aws.svg",
+          "https://mindtechpy.net/images/tech/postgres.png"
+        ],
+        "ogImage": null,
+        "screenshots": []
+      },
+      "meta": {
+        "title": "MindTechPy",
+        "description": "Empresa de desarrollo de software en Paraguay",
+        "slogan": "Construimos software que impulsa su negocio"
+      },
+      "timeline": {
+        "startDate": "2023-06-01",
+        "lastUpdate": "2025-10-01"
+      },
+      "highlights": [
+        "Deploy automatizado en Kubernetes con imágenes GHCR",
+        "Diseño original dark-tech con temas duales"
+      ],
+      "architecture": "SSR + static"
+    },
+    {
+      "id": "pohapp",
+      "name": "PohApp - Poha Ñhanapp",
+      "description": "Aplicación móvil personal de plantas medicinales paraguayas. Proyecto de tesis en desarrollo, disponible en Google Play Store.",
+      "category": "advanced",
+      "tier": 2,
+      "techStack": [
+        "Flutter",
+        "Dart"
+      ],
+      "features": [
+        "Catálogo de plantas medicinales",
+        "Información de uso tradicional",
+        "Disponible en Google Play"
+      ],
+      "status": "production",
+      "url": null,
+      "playStore": "https://play.google.com/store/apps/details?id=com.nhanapp.pohapp&hl=es_PY",
+      "images": {
+        "logo": "https://play-lh.googleusercontent.com/4Swkz57Vm_-72k-aTJPejxdK_9B4GVkeUro2OkJ6IqamW3XMlF_zVe5zmKC5U8zR6Q=w240-h480-rw",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2025-01-01",
+        "lastUpdate": "2026-03-01"
+      },
+      "highlights": [
+        "Proyecto de tesis personal",
+        "Disponible en Google Play Store"
+      ],
+      "architecture": "Mobile app (Flutter)"
+    },
+    {
+      "id": "heredity",
+      "name": "Heredity",
+      "description": "Constructor de árboles genealógicos con editor visual de grafos. Incluye dark mode, accesibilidad y diseño responsive.",
+      "category": "advanced",
+      "tier": 2,
+      "techStack": [
+        "React",
+        "React Flow",
+        "Tailwind",
+        "Zod"
+      ],
+      "features": [
+        "Editor visual de grafos para árboles genealógicos",
+        "Dark mode",
+        "Diseño responsive",
+        "Accesibilidad (focus trap en modales)",
+        "Validación con Zod"
+      ],
+      "status": "beta",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2025-06-01",
+        "lastUpdate": "2026-01-01"
+      },
+      "highlights": [
+        "UI/UX con dark mode, diseño responsive, accesibilidad y focus trap en modales"
+      ],
+      "architecture": "SPA con React Flow"
+    },
+    {
+      "id": "sms-sender",
+      "name": "SMS Sender Pro",
+      "description": "Aplicación Android para envío masivo de SMS. Producto comercial de MindTechPy distribuido en Google Play.",
+      "category": "advanced",
+      "tier": 2,
+      "techStack": [
+        "Vanilla JS",
+        "Bootstrap",
+        "Capacitor",
+        "Android Native"
+      ],
+      "features": [
+        "Envío masivo de SMS",
+        "Interfaz simple y rápida",
+        "App nativa Android vía Capacitor"
+      ],
+      "status": "production",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "playStore": "Google Play",
+      "timeline": {
+        "startDate": "2023-09-01",
+        "lastUpdate": "2025-06-01"
+      },
+      "highlights": [
+        "Producto comercial activo en Google Play",
+        "Herramienta de marketing para pequeñas empresas"
+      ],
+      "architecture": "Hybrid mobile (Capacitor)"
+    },
+    {
+      "id": "ecommerce-remeras",
+      "name": "E-Commerce Remeras Personalizadas",
+      "description": "E-commerce con diseñador online de remeras personalizadas. Editor drag & drop con vista previa en tiempo real y pagos con Stripe.",
+      "category": "advanced",
+      "tier": 2,
+      "techStack": [
+        "Next.js 14",
+        "NestJS",
+        "PostgreSQL",
+        "Prisma",
+        "Tailwind",
+        "Fabric.js",
+        "Stripe"
+      ],
+      "features": [
+        "Diseñador online drag & drop",
+        "Vista previa en tiempo real",
+        "Pagos con Stripe",
+        "Autenticación JWT + OTP"
+      ],
+      "status": "development",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2024-09-01",
+        "lastUpdate": "2025-03-01"
+      },
+      "highlights": [
+        "Diseñador interactivo con Fabric.js y vista previa en tiempo real"
+      ],
+      "architecture": "Full-stack monorepo"
+    },
+    {
+      "id": "presupuestos-interactivos",
+      "name": "Presupuestos Interactivos",
+      "description": "Generador interactivo de presupuestos y cotizaciones para proyectos de software. Permite configurar módulos, comparar opciones y exportar a PDF.",
+      "category": "advanced",
+      "tier": 2,
+      "techStack": [
+        "HTML",
+        "Vanilla JS",
+        "html2pdf.js"
+      ],
+      "features": [
+        "Generación interactiva de presupuestos",
+        "Exportación a PDF",
+        "Cotizaciones personalizables"
+      ],
+      "status": "production",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2025-04-01",
+        "lastUpdate": "2026-01-01"
+      },
+      "highlights": [
+        "Integración planificada: Brastec/Speed Queen, Dinelco Checkout, IoT ESP32+MAX485"
+      ],
+      "architecture": "Static SPA"
+    }
+  ],
+  "products": [],
+  "education": [
+    {
+      "id": "ingenieria-utic",
+      "degree": "Ingeniería en Sistemas Informáticos",
+      "institution": "Universidad Tecnológica Intercontinental (UTIC)",
+      "startYear": 2021,
+      "endYear": null,
+      "status": "cursando",
+      "type": "grado"
+    },
+    {
+      "id": "licenciatura-utic",
+      "degree": "Licenciatura en Análisis de Sistemas Informáticos",
+      "institution": "Universidad Tecnológica Intercontinental (UTIC)",
+      "completedYear": 2018,
+      "type": "grado"
+    },
+    {
+      "id": "bachiller-educart",
+      "degree": "Bachiller Técnico en Informática",
+      "institution": "EducArt",
+      "completedYear": 2012,
+      "type": "secundario"
+    }
+  ],
+  "certifications": [],
+  "timeline": [
+    {
+      "date": "2015-03-01",
+      "type": "project_start",
+      "project": "one-srl",
+      "description": "Inicio como Desarrollador de Software en One S.R.L"
+    },
+    {
+      "date": "2018-01-01",
+      "type": "achievement",
+      "project": "licenciatura-utic",
+      "description": "Licenciatura en Análisis de Sistemas Informáticos - UTIC"
+    },
+    {
+      "date": "2021-01-01",
+      "type": "milestone",
+      "project": "ingenieria-utic",
+      "description": "Inicio de Ingeniería en Sistemas Informáticos - UTIC"
+    },
+    {
+      "date": "2023-01-01",
+      "type": "project_start",
+      "project": "mindtechpy",
+      "description": "Fundación de MindTechPy, empresa de desarrollo de software en Paraguay"
+    },
+    {
+      "date": "2023-06-01",
+      "type": "project_start",
+      "project": "web-mindtechpy",
+      "description": "Inicio del desarrollo del sitio web corporativo de MindTechPy"
+    },
+    {
+      "date": "2023-09-01",
+      "type": "project_start",
+      "project": "sms-sender",
+      "description": "Lanzamiento de SMS Sender Pro en Google Play"
+    },
+    {
+      "date": "2024-02-01",
+      "type": "milestone",
+      "project": "one-srl",
+      "description": "Fin de etapa en One S.R.L después de casi 9 años"
+    },
+    {
+      "date": "2024-01-01",
+      "type": "project_start",
+      "project": "streamledger",
+      "description": "Inicio de StreamLedger, plataforma de gestión de servicios de streaming"
+    },
+    {
+      "date": "2024-03-01",
+      "type": "project_start",
+      "project": "edge-mobile-ideas",
+      "description": "Inicio como Technical Lead / Fullstack Developer en Edge Mobile Ideas"
+    },
+    {
+      "date": "2024-03-01",
+      "type": "project_start",
+      "project": "electronico-sifen",
+      "description": "Inicio del desarrollo del middleware de facturación electrónica SIFEN"
+    },
+    {
+      "date": "2024-06-01",
+      "type": "project_start",
+      "project": "ecommerce-capa",
+      "description": "Inicio del e-commerce para Capa, tienda de ropa en Paraguay"
+    },
+    {
+      "date": "2024-08-01",
+      "type": "project_start",
+      "project": "cuenly",
+      "description": "Inicio del desarrollo de CuenlyApp, SaaS con IA y Pagopar"
+    },
+    {
+      "date": "2024-09-01",
+      "type": "project_start",
+      "project": "ecommerce-remeras",
+      "description": "Inicio de E-Commerce Remeras Personalizadas con diseñador online"
+    },
+    {
+      "date": "2024-09-01",
+      "type": "project_start",
+      "project": "punto-venta",
+      "description": "Inicio del sistema Punto de Venta con integración SIFEN"
+    },
+    {
+      "date": "2025-01-01",
+      "type": "project_start",
+      "project": "biometric-identity-engine",
+      "description": "Inicio del Motor de Identidad Biométrica multi-tenant"
+    },
+    {
+      "date": "2025-03-01",
+      "type": "project_start",
+      "project": "impostor-app",
+      "description": "Inicio de El Impostor, juego multijugador de deducción social"
+    },
+    {
+      "date": "2025-04-01",
+      "type": "project_start",
+      "project": "presupuestos-interactivos",
+      "description": "Inicio de Presupuestos Interactivos para cotizaciones de clientes"
+    },
+    {
+      "date": "2025-06-01",
+      "type": "project_start",
+      "project": "heredity",
+      "description": "Inicio de Heredity, constructor de árboles genealógicos"
+    },
+    {
+      "date": "2025-09-01",
+      "type": "milestone",
+      "project": "electronico-sifen",
+      "description": "Plantillas PDF personalizables y servicio de email integrado completados"
+    },
+    {
+      "date": "2025-12-01",
+      "type": "milestone",
+      "project": "cuenly",
+      "description": "Corrección de bug crítico de facturación y estabilización de integración Pagopar"
+    },
+    {
+      "date": "2026-01-01",
+      "type": "milestone",
+      "project": "ecommerce-capa",
+      "description": "Mejoras integrales de e-commerce: variantes, envíos interactivos y backoffice"
+    },
+    {
+      "date": "2026-02-01",
+      "type": "milestone",
+      "project": "biometric-identity-engine",
+      "description": "Pipeline de reconocimiento facial con detección de vida operativo"
+    },
+    {
+      "date": "2026-02-01",
+      "type": "milestone",
+      "project": "punto-venta",
+      "description": "Migración de autenticación completada: Keycloak a NestJS JWT nativo"
+    },
+    {
+      "date": "2026-03-01",
+      "type": "milestone",
+      "project": "ecommerce-capa",
+      "description": "UI/UX profesional con accesibilidad, dark mode y transiciones de página"
+    },
+    {
+      "date": "2026-03-01",
+      "type": "deployment",
+      "project": "impostor-app",
+      "description": "El Impostor disponible en web y Google Play (internal track)"
+    },
+    {
+      "date": "2025-01-01",
+      "type": "project_start",
+      "project": "pohapp",
+      "description": "Inicio de PohApp - Poha Ñhanapp, aplicación de plantas medicinales paraguayas"
+    }
+  ],
+  "metadata": {
+    "generatedAt": "2026-03-23",
+    "version": "2.0.0",
+    "language": "es",
+    "totalProjects": 15,
+    "totalTechnologies": 81,
+    "experienceYears": 11
+  }
+}
