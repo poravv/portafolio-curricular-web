@@ -906,7 +906,57 @@
       "type": "secundario"
     }
   ],
-  "certifications": [],
+  "certifications": [
+    {
+      "id": "aws-developer-associate",
+      "name": "AWS Certified Developer – Associate",
+      "issuer": "Amazon Web Services Training and Certification",
+      "date": "2026-04",
+      "logo": "/logos/aws-developer-associate.svg"
+    },
+    {
+      "id": "google-apps-moviles",
+      "name": "Curso de Desarrollo de Apps Móviles",
+      "issuer": "Universidad Complutense de Madrid & Google Activate",
+      "date": "2018"
+    },
+    {
+      "id": "google-marketing-digital",
+      "name": "Curso Básico de Marketing Digital",
+      "issuer": "IAB (Interactive Advertising Bureau) & Google Actívate",
+      "date": "2018"
+    },
+    {
+      "id": "delitos-informaticos",
+      "name": "Seminario Sobre Delitos Informáticos",
+      "issuer": "Universidad Tecnológica Intercontinental (UTIC)",
+      "date": "2015"
+    },
+    {
+      "id": "innovacion-tecnologica",
+      "name": "VI Seminario Innovación Tecnológica Informática",
+      "issuer": "Cooperativa Capiatá",
+      "date": "2012"
+    },
+    {
+      "id": "scrum-linkedin",
+      "name": "Curso Scrum",
+      "issuer": "LinkedIn Learning",
+      "date": "2022"
+    },
+    {
+      "id": "fullstack-linkedin",
+      "name": "Fundamentos del desarrollo web: Full Stack o Front-end",
+      "issuer": "LinkedIn Learning",
+      "date": "2022"
+    },
+    {
+      "id": "javascript-linkedin",
+      "name": "JavaScript",
+      "issuer": "LinkedIn Learning",
+      "date": "2022"
+    }
+  ],
   "timeline": [
     {
       "date": "2015-03-01",

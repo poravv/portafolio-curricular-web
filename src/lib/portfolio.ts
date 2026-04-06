@@ -6,6 +6,7 @@ export type Experience = Portfolio['experience'][number];
 export type Project = Portfolio['projects'][number];
 export type TimelineEntry = Portfolio['timeline'][number];
 export type Education = Portfolio['education'][number];
+export type Certification = Portfolio['certifications'][number];
 export type Product = Portfolio['products'][number];
 export type Skills = Portfolio['skills'];
 
