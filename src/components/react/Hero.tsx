@@ -339,9 +339,9 @@ export default function Hero({ profile }: HeroProps) {
             reducedMotion={reducedMotion}
           />
           <StatItem
-            value={65}
+            value={8}
             suffix="+"
-            label="Tecnologías"
+            label="Certificaciones"
             duration={2000}
             reducedMotion={reducedMotion}
           />

@@ -291,7 +291,7 @@
       "status": "production",
       "url": "https://foxbox.com.py/",
       "images": {
-        "logo": "https://scontent.fasu8-1.fna.fbcdn.net/v/t39.30808-6/295850009_180878531074459_2121498896841117084_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=4XLm4V4at6oQ7kNvwElIYBR&_nc_oc=AdpkneMAGOVBrW46KMGhU20kolvCVCNE4_6CvUKxL_9yu5sllpzOVEZoOCeftjo7dJZvSTmju0tTxEkqgZiENLyN&_nc_zt=23&_nc_ht=scontent.fasu8-1.fna&_nc_gid=bdq0JvSdFQuyFFcK0tY_vA&_nc_ss=7a32e&oh=00_Afw8NeSq8iLWzUhyGLpdwXtznNiayOVbu6dX98WsaCNeVw&oe=69C798A7",
+        "logo": "/logos/logo-foxbox.png",
         "ogImage": null,
         "screenshots": []
       },
