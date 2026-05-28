@@ -71,6 +71,12 @@ export default function Certifications({ certifications }: CertificationsProps) 
       />
 
       <div className="mx-auto max-w-container container-padding relative">
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-4" aria-hidden="true">
+          <span className="section-number">06</span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+
         {/* Section heading */}
         <motion.div variants={fadeUp} {...motionProps} className="mb-12 md:mb-16">
           <p className="text-label uppercase tracking-widest text-primary-light mb-3">
@@ -91,7 +97,7 @@ export default function Certifications({ certifications }: CertificationsProps) 
             <motion.div
               key={cert.id}
               variants={staggerItem}
-              className="glass-card p-5 md:p-6 group hover:border-primary/30 transition-all duration-300 flex flex-col"
+              className="glass-card p-5 md:p-6 group hover:border-primary/30 hover:-translate-y-1 hover:shadow-glow-sm transition-all duration-300 flex flex-col"
             >
               {/* Logo or icon */}
               <div className="flex items-start gap-4 mb-4">

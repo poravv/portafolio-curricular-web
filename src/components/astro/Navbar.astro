@@ -9,19 +9,27 @@ const navLinks = [
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 glass-nav">
-  <nav class="mx-auto max-w-container container-padding flex items-center justify-between h-16">
-    <a href="#" class="font-heading font-bold text-xl gradient-text">
-      AV
+<header class="fixed top-0 left-0 right-0 z-[100] flex justify-center pt-4 px-4" role="banner">
+  <!-- Desktop pill nav -->
+  <nav
+    class="nav-pill hidden md:flex items-center gap-1 px-2 py-2"
+    aria-label="Navegación principal"
+  >
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 px-3 py-1 mr-2 group" aria-label="Inicio">
+      <span class="font-heading font-bold text-sm gradient-text transition-opacity duration-200 group-hover:opacity-80">AV</span>
     </a>
 
-    <!-- Desktop nav -->
-    <ul class="hidden md:flex items-center gap-6">
+    <!-- Divider -->
+    <div class="w-px h-4 bg-white/10" aria-hidden="true"></div>
+
+    <!-- Nav links -->
+    <ul class="flex items-center" role="list">
       {navLinks.map(link => (
         <li>
           <a
             href={link.href}
-            class="text-body-sm text-slate-600 dark:text-text-secondary hover:text-primary-light transition-colors duration-200"
+            class="nav-link px-3.5 py-2 rounded-full text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/5 transition-all duration-200"
           >
             {link.label}
           </a>
@@ -29,17 +37,48 @@ const navLinks = [
       ))}
     </ul>
 
-    <div class="flex items-center gap-3">
-      <!-- Theme toggle -->
+    <!-- Divider -->
+    <div class="w-px h-4 bg-white/10" aria-hidden="true"></div>
+
+    <!-- Theme toggle -->
+    <button
+      id="theme-toggle"
+      class="p-2 rounded-full text-text-secondary hover:text-primary-light hover:bg-white/5 transition-all duration-200"
+      aria-label="Cambiar tema"
+    >
+      <svg class="w-4 h-4 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646Z"/>
+      </svg>
+      <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+      </svg>
+    </button>
+
+    <!-- CTA -->
+    <a
+      href="#contact"
+      class="ml-1 px-5 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-glow-sm"
+    >
+      Contratar
+    </a>
+  </nav>
+
+  <!-- Mobile nav bar -->
+  <div class="md:hidden w-full flex items-center justify-between nav-pill px-4 py-2.5">
+    <!-- Logo -->
+    <a href="#" class="font-heading font-bold text-sm gradient-text" aria-label="Inicio">AV</a>
+
+    <div class="flex items-center gap-2">
+      <!-- Theme toggle mobile -->
       <button
-        id="theme-toggle"
-        class="p-2 rounded-lg text-slate-600 dark:text-text-secondary hover:text-primary-light hover:bg-slate-100 dark:hover:bg-surface transition-all duration-200"
+        id="theme-toggle-mobile"
+        class="p-2 rounded-full text-text-secondary hover:text-primary-light hover:bg-white/5 transition-all duration-200"
         aria-label="Cambiar tema"
       >
-        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646Z"/>
         </svg>
-        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
         </svg>
       </button>
@@ -47,50 +86,73 @@ const navLinks = [
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 rounded-lg text-slate-600 dark:text-text-secondary hover:text-primary-light hover:bg-slate-100 dark:hover:bg-surface transition-all duration-200"
+        class="p-2 rounded-full text-text-secondary hover:text-primary-light hover:bg-white/5 transition-all duration-200"
         aria-label="Abrir menu"
         aria-expanded="false"
+        aria-controls="mobile-menu"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden hidden">
-    <div class="glass-card mx-4 mb-4 p-4 rounded-2xl">
-      <ul class="flex flex-col gap-2">
-        {navLinks.map(link => (
-          <li>
-            <a
-              href={link.href}
-              class="block py-2 px-3 rounded-lg text-slate-600 dark:text-text-secondary hover:text-primary-light hover:bg-slate-100 dark:hover:bg-surface transition-all duration-200"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
   </div>
 </header>
 
+<!-- Mobile dropdown menu -->
+<div
+  id="mobile-menu"
+  class="fixed top-20 left-4 right-4 z-[99] hidden"
+  role="navigation"
+  aria-label="Menú móvil"
+>
+  <div class="nav-pill rounded-2xl p-3">
+    <ul class="flex flex-col gap-1" role="list">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class="block py-2.5 px-4 rounded-xl text-sm text-text-secondary hover:text-text-primary hover:bg-white/5 transition-all duration-200"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-2 border-t border-white/10 mt-1">
+        <a
+          href="#contact"
+          class="block py-2.5 px-4 rounded-xl text-sm font-semibold text-center bg-primary hover:bg-primary-dark text-white transition-all duration-300"
+        >
+          Contratar
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <script>
-  // Theme toggle
-  const toggle = document.getElementById('theme-toggle');
-  toggle?.addEventListener('click', () => {
-    const isDark = document.documentElement.classList.toggle('dark');
+  function applyTheme(isDark: boolean) {
+    document.documentElement.classList.toggle('dark', isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+
+  // Desktop theme toggle
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    applyTheme(!document.documentElement.classList.contains('dark'));
+  });
+
+  // Mobile theme toggle
+  document.getElementById('theme-toggle-mobile')?.addEventListener('click', () => {
+    applyTheme(!document.documentElement.classList.contains('dark'));
   });
 
   // Mobile menu
   const menuBtn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+
   menuBtn?.addEventListener('click', () => {
-    const isOpen = menu?.classList.toggle('hidden');
-    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    const isHidden = menu?.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(!isHidden));
   });
 
   // Close mobile menu on link click
@@ -101,23 +163,18 @@ const navLinks = [
     });
   });
 
-  // Active section highlighting
+  // Active section highlighting via IntersectionObserver
   const sections = document.querySelectorAll('section[id]');
-  const navAnchors = document.querySelectorAll('nav a[href^="#"]');
+  const navLinks = document.querySelectorAll('.nav-link');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        navAnchors.forEach(a => {
-          a.classList.toggle('text-primary-light', a.getAttribute('href') === `#${entry.target.id}`);
-          if (a.getAttribute('href') !== `#${entry.target.id}`) {
-            a.classList.remove('text-primary-light');
-            a.classList.add('text-slate-600');
-            a.classList.add('dark:text-text-secondary');
-          } else {
-            a.classList.remove('text-slate-600');
-            a.classList.remove('dark:text-text-secondary');
-          }
+        navLinks.forEach(a => {
+          const isActive = a.getAttribute('href') === `#${entry.target.id}`;
+          a.classList.toggle('text-text-primary', isActive);
+          a.classList.toggle('bg-white/5', isActive);
+          a.classList.toggle('text-text-secondary', !isActive);
         });
       }
     });

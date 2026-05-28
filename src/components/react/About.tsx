@@ -89,6 +89,12 @@ export default function About({ profile, experience, projects }: AboutProps) {
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
 
       <div className="mx-auto max-w-container container-padding relative">
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-4" aria-hidden="true">
+          <span className="section-number">01</span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+
         {/* Section heading */}
         <motion.div
           variants={fadeUp}
@@ -174,7 +180,7 @@ export default function About({ profile, experience, projects }: AboutProps) {
             <motion.div
               key={stat.label}
               variants={staggerItem}
-              className="glass-card p-5 md:p-6 text-center group hover:border-primary/30 transition-colors duration-300"
+              className="glass-card p-5 md:p-6 text-center group hover:border-primary/30 hover:-translate-y-1 hover:shadow-glow-sm transition-all duration-300"
             >
               <div className="text-h1-mobile md:text-h1 font-heading font-bold gradient-text">
                 <AnimatedCounter

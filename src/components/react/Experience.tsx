@@ -59,6 +59,12 @@ export default function Experience({ experience }: ExperienceProps) {
       <div className="pointer-events-none absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full bg-secondary/5 blur-3xl" />
 
       <div className="mx-auto max-w-container container-padding relative">
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-4" aria-hidden="true">
+          <span className="section-number">02</span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+
         {/* Section heading */}
         <motion.div
           variants={fadeUp}
@@ -92,8 +98,8 @@ export default function Experience({ experience }: ExperienceProps) {
                     {...motionProps}
                     className={`
                       absolute top-8 left-4 md:left-1/2 -translate-x-1/2 z-10
-                      w-4 h-4 rounded-full bg-primary border-[3px] border-white dark:border-bg-base
-                      shadow-[0_0_12px_rgba(139,92,246,0.5)]
+                      w-4 h-4 rounded-full bg-primary border-[3px] border-bg-base
+                      shadow-[0_0_16px_rgba(139,92,246,0.6),0_0_4px_rgba(139,92,246,0.4)]
                     `}
                   >
                     {/* Pulse ring */}
@@ -111,7 +117,7 @@ export default function Experience({ experience }: ExperienceProps) {
                     `}
                   >
                     {/* Card */}
-                    <article className="glass-card p-6 md:p-8 group hover:border-primary/30 transition-colors duration-300 relative">
+                    <article className="glass-card p-6 md:p-8 group hover:border-primary/30 hover:-translate-y-1 hover:shadow-glow-sm transition-all duration-300 relative">
                       {/* Connector to timeline dot — desktop only */}
                       <div
                         className={`

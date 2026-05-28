@@ -52,6 +52,12 @@ export default function Education({ education }: EducationProps) {
       />
 
       <div className="mx-auto max-w-container container-padding relative">
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-4" aria-hidden="true">
+          <span className="section-number">05</span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+
         {/* Section heading */}
         <motion.div variants={fadeUp} {...motionProps} className="mb-12 md:mb-16">
           <p className="text-label uppercase tracking-widest text-primary-light mb-3">
@@ -102,7 +108,7 @@ export default function Education({ education }: EducationProps) {
                   </div>
 
                   {/* Card */}
-                  <div className="glass-card p-5 md:p-6 group hover:border-primary/30 transition-all duration-300">
+                  <div className="glass-card p-5 md:p-6 group hover:border-primary/30 hover:-translate-y-1 hover:shadow-glow-sm transition-all duration-300" style={{ transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}>
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
                         {/* Year badge */}

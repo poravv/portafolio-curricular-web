@@ -8,6 +8,11 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -17,6 +22,19 @@
   body {
     @apply bg-bg-base text-text-primary font-body;
     overflow-x: hidden;
+  }
+
+  /* Grain overlay — decorative film grain effect */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
+    animation: grain 0.5s steps(1) infinite;
   }
 
   ::selection {
@@ -46,7 +64,8 @@
 
 @layer components {
   .glass-card {
-    @apply bg-bg-glass backdrop-blur-xl border border-border-glass rounded-2xl shadow-glass;
+    @apply bg-bg-glass backdrop-blur-xl border border-border-glass rounded-2xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .glass-nav {
@@ -67,6 +86,41 @@
 
   .container-padding {
     @apply px-4 md:px-6 lg:px-8;
+  }
+
+  /* Section number label */
+  .section-number {
+    @apply text-xs font-mono font-medium tracking-widest text-text-muted uppercase;
+    letter-spacing: 0.25em;
+  }
+
+  /* Per-card accent theming via CSS custom property */
+  .card-accented {
+    border-top: 1px solid var(--card-accent, theme('colors.primary.DEFAULT'));
+    box-shadow: 0 0 30px color-mix(in srgb, var(--card-accent, #8B5CF6) 10%, transparent);
+  }
+  .card-accented:hover {
+    box-shadow: 0 0 50px color-mix(in srgb, var(--card-accent, #8B5CF6) 20%, transparent);
+  }
+
+  /* Floating pill navbar */
+  .nav-pill {
+    @apply backdrop-blur-xl rounded-full border border-white/10;
+    background: rgba(10, 10, 15, 0.85);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #8B5CF6, #06B6D4, #F43F5E);
+    transform-origin: left;
+    z-index: 200;
+    transform: scaleX(0);
   }
 }
 
@@ -90,27 +144,104 @@
   }
 }
 
-/* Light mode overrides */
+/* ── Light mode — comprehensive design ──────────────────────────────────── */
 :root:not(.dark) body {
-  @apply bg-white text-slate-900;
+  background-color: #F1F3F9;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% -5%, rgba(139, 92, 246, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 105%, rgba(6, 182, 212, 0.08) 0%, transparent 55%);
+  color: #0F172A;
 }
 
+/* Starfield canvas: hidden in light mode */
+:root:not(.dark) canvas { display: none; }
+
+/* Blobs: softer in light mode */
+:root:not(.dark) [style*="radial-gradient(circle, rgba(139"] { opacity: 0.45 !important; }
+:root:not(.dark) [style*="radial-gradient(circle, rgba(6"]   { opacity: 0.35 !important; }
+:root:not(.dark) [style*="radial-gradient(circle, rgba(244"]  { opacity: 0.20 !important; }
+
+/* Grain overlay: barely visible */
+:root:not(.dark) body::after { opacity: 0.015; }
+
+/* ── Text ───────────────────────────────────────────────────────────────── */
+:root:not(.dark) .text-text-primary   { color: #0F172A; }
+:root:not(.dark) .text-text-secondary { color: #475569; }
+:root:not(.dark) .text-text-muted     { color: #64748B; }
+
+/* ── Gradient text ──────────────────────────────────────────────────────── */
+:root:not(.dark) .gradient-text {
+  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 45%, #0891B2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Surfaces & backgrounds ─────────────────────────────────────────────── */
+:root:not(.dark) .bg-bg-glass,
+:root:not(.dark) .bg-bg-glass\/40,
+:root:not(.dark) .bg-bg-glass\/60,
+:root:not(.dark) .bg-bg-glass\/80     { background-color: rgba(255, 255, 255, 0.80); }
+:root:not(.dark) .bg-bg-elevated\/80  { background-color: rgba(255, 255, 255, 0.92); }
+:root:not(.dark) .bg-bg-deep\/40      { background-color: rgba(226, 232, 240, 0.70); }
+:root:not(.dark) .bg-bg-base          { background-color: #F1F3F9; }
+
+/* hover whites → hover dark */
+:root:not(.dark) .hover\:bg-white\/5:hover  { background-color: rgba(0, 0, 0, 0.04); }
+:root:not(.dark) .hover\:bg-white\/10:hover { background-color: rgba(0, 0, 0, 0.07); }
+:root:not(.dark) .bg-white\/5  { background-color: rgba(0, 0, 0, 0.03); }
+:root:not(.dark) .bg-white\/10 { background-color: rgba(0, 0, 0, 0.05); }
+
+/* ── Borders ────────────────────────────────────────────────────────────── */
+:root:not(.dark) .border-border         { border-color: rgba(0, 0, 0, 0.09); }
+:root:not(.dark) .border-border-glass   { border-color: rgba(139, 92, 246, 0.18); }
+:root:not(.dark) .border-white\/10      { border-color: rgba(0, 0, 0, 0.07); }
+:root:not(.dark) .border-white\/5       { border-color: rgba(0, 0, 0, 0.04); }
+
+/* ── Components ─────────────────────────────────────────────────────────── */
 :root:not(.dark) .glass-card {
-  @apply bg-white/70 border-slate-200 shadow-lg;
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04),
+              inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+}
+:root:not(.dark) .glass-card:hover {
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.10), 0 2px 8px rgba(0, 0, 0, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 :root:not(.dark) .glass-nav {
-  @apply bg-white/80 border-slate-200;
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.07);
 }
 
-:root:not(.dark) ::-webkit-scrollbar-track {
-  @apply bg-slate-100;
+:root:not(.dark) .nav-pill {
+  background: rgba(255, 255, 255, 0.90) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.09) !important;
 }
 
+:root:not(.dark) .section-number { color: #94A3B8; }
+
+:root:not(.dark) .card-accented {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--card-accent, #8B5CF6) 7%, transparent);
+}
+:root:not(.dark) .card-accented:hover {
+  box-shadow: 0 0 40px color-mix(in srgb, var(--card-accent, #8B5CF6) 14%, transparent);
+}
+
+/* ── Scroll progress bar ────────────────────────────────────────────────── */
+:root:not(.dark) .scroll-progress {
+  background: linear-gradient(90deg, #7C3AED, #06B6D4, #E11D48);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────── */
+:root:not(.dark) ::-webkit-scrollbar-track { background: #E2E8F0; }
+:root:not(.dark) ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.25); }
+
+/* ── Selection ──────────────────────────────────────────────────────────── */
 :root:not(.dark) ::selection {
-  @apply bg-primary/20 text-slate-900;
-}
-
-:root:not(.dark) .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-dark via-primary to-secondary;
+  background: rgba(139, 92, 246, 0.15);
+  color: #0F172A;
 }

@@ -1,0 +1,50 @@
+services:
+
+  # ── Web (Astro static → Nginx) ───────────────────────────────────────────
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    image: portafolio-curricular-web:local
+    container_name: portafolio_web
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.portafolio.service=web"
+      - "com.portafolio.version=1.0"
+
+  # ── Reverse proxy (Caddy — HTTPS local con cert auto-generado) ───────────
+  proxy:
+    image: caddy:2.8-alpine
+    container_name: portafolio_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+    profiles:
+      - https  # solo se levanta con: docker compose --profile https up
+
+volumes:
+  caddy_data:
+    driver: local
+  caddy_config:
+    driver: local
+
+networks:
+  default:
+    name: portafolio_network

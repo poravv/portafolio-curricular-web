@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import StarfieldBackground from '../components/react/StarfieldBackground';
 
 interface Props {
   title?: string;
@@ -35,16 +36,45 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
-    <!-- Dark mode script (prevent flash) -->
+    <!-- Dark mode: default dark, only switch to light if user explicitly chose it -->
     <script is:inline>
-      const theme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.classList.toggle('dark', theme === 'dark');
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          // First visit or explicit dark: force dark and persist
+          document.documentElement.classList.add('dark');
+          if (!saved) localStorage.setItem('theme', 'dark');
+        }
+      } catch (e) {
+        document.documentElement.classList.add('dark');
+      }
     </script>
   </head>
-  <body class="min-h-dvh">
+  <body class="min-h-dvh pt-20">
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
     <a href="#main-content" class="skip-to-content">
       Saltar al contenido principal
     </a>
+
+    <!-- Starfield background: fixed, z-0, decorative -->
+    <StarfieldBackground client:load />
+
     <slot />
+
+    <script>
+      const progress = document.getElementById('scroll-progress');
+      const updateProgress = () => {
+        if (!progress) return;
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? scrollY / docHeight : 0;
+        progress.style.transform = `scaleX(${percent})`;
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+    </script>
   </body>
 </html>

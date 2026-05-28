@@ -1,0 +1,12 @@
+localhost {
+    reverse_proxy web:80
+
+    # Auto-HTTPS con certificado local auto-firmado
+    tls internal
+
+    # Logs
+    log {
+        output stdout
+        format console
+    }
+}

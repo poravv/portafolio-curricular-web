@@ -48,6 +48,8 @@ interface ProjectsProps {
 
 type FilterKey = 'all' | 'production' | 'beta' | 'development';
 
+const ACCENT_COLORS = ['#8B5CF6', '#06B6D4', '#F43F5E', '#22C55E', '#F59E0B', '#8B5CF6', '#06B6D4'] as const;
+
 const filters: { key: FilterKey; label: string }[] = [
   { key: 'all', label: 'Todos' },
   { key: 'production', label: 'Producción' },
@@ -100,13 +102,19 @@ export default function Projects({ projects }: ProjectsProps) {
   return (
     <section id="projects" className="section-padding" aria-label="Proyectos">
       <div className="mx-auto max-w-container container-padding">
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-4" aria-hidden="true">
+          <span className="section-number">04</span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 text-center"
+          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+          className="mb-10"
         >
           <h2 className="text-h2-mobile md:text-h2 font-heading gradient-text">
             Proyectos
@@ -157,8 +165,8 @@ export default function Projects({ projects }: ProjectsProps) {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            {filtered.map((project, index) => (
+              <ProjectCard key={project.id} project={project} accentColor={ACCENT_COLORS[index % ACCENT_COLORS.length]} />
             ))}
           </AnimatePresence>
         </motion.div>
@@ -167,7 +175,7 @@ export default function Projects({ projects }: ProjectsProps) {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, accentColor }: { project: Project; accentColor: string }) {
   const [expanded, setExpanded] = useState(false);
   const status = statusConfig[project.status] ?? statusConfig.active;
   const imageUrl =
@@ -184,11 +192,11 @@ function ProjectCard({ project }: { project: Project }) {
       animate="visible"
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
       className={`
-        glass-card group relative flex flex-col overflow-hidden
-        transition-all duration-300 ease-out
-        hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow-md
+        glass-card card-accented group relative flex flex-col overflow-hidden
+        transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-md
         ${isTier1 ? 'lg:col-span-1' : ''}
       `}
+      style={{ '--card-accent': accentColor, transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' } as React.CSSProperties}
     >
       {/* Image / Placeholder area */}
       <div className="relative h-44 md:h-48 overflow-hidden">
