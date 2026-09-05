@@ -4,7 +4,19 @@
 Sitio web de portafolio curricular profesional. Objetivo: crear la mejor web de portafolio con diseño responsivo, animaciones de alta calidad, y experiencia de usuario excepcional.
 
 ## Tech Stack
-- To be defined during `/sdd-init` — likely Next.js/React + Tailwind CSS + Framer Motion
+- **Astro 6** (`output: 'static'`) + **React 19** (islas, `client:visible`) + **Tailwind CSS 3** + **Framer Motion 12** + TypeScript
+- **Node 24.20.0 LTS** — fijado en `.nvmrc` y `.node-version`
+- Contenido: fuente única en `data/portfolio.json`, acceso tipado vía `src/lib/portfolio.ts`
+
+## Deploy
+- **Cloudflare Workers** (Workers Builds), no Pages. Push a `main` compila y publica.
+- Dominio: **andres.mindtechpy.net**. `astro.config.mjs` → `site:` es la fuente única
+  del dominio (canonical, JSON-LD y sitemap salen de ahí vía `Astro.site`).
+  `public/robots.txt` y `public/llms.txt` son estáticos y se editan a mano.
+- `wrangler.jsonc` → `name` debe coincidir con el Worker del dashboard
+  (`portafolio-curricular-web`).
+- `.npmrc` con `legacy-peer-deps=true` es obligatorio: `@astrojs/tailwind@6` declara
+  peer `astro <=5` y sin eso `npm ci` falla. Se elimina al migrar a Tailwind 4.
 
 ## Architecture Principles
 - **Mobile-first responsive design** — every component starts from mobile
