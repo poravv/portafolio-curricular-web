@@ -5,7 +5,8 @@
     "company": "Edge Mobile Ideas",
     "ownCompany": "MindTech Paraguay (MindTechPy)",
     "location": "Capiatá, Paraguay",
-    "yearsOfExperience": 11,
+    "yearsOfExperience": 9,
+    "careerStartYear": 2017,
     "contact": {
       "email": "andyvercha@gmail.com",
       "businessEmail": "andres.vera@mindtechpy.net",
@@ -16,7 +17,7 @@
       "linkedin": "andrés-valentin-vera-chavez-b3baa6188",
       "github": "poravv"
     },
-    "summary": "Cuento con más de 11 años de experiencia como Desarrollador Fullstack y una parte de ella como Technical Lead, tiempo en el que me he especializado y he apoyado en construir soluciones escalables y fáciles de mantener. Tengo un amplio conocimiento en arquitecturas distribuidas y aplico habitualmente principios de Clean Architecture y Arquitectura Hexagonal para asegurar la calidad de cada proyecto."
+    "summary": "Cuento con {years} años de experiencia como Desarrollador Fullstack y una parte de ella como Technical Lead, tiempo en el que me he especializado y he apoyado en construir soluciones escalables y fáciles de mantener. Tengo un amplio conocimiento en arquitecturas distribuidas y aplico habitualmente principios de Clean Architecture y Arquitectura Hexagonal para asegurar la calidad de cada proyecto."
   },
   "experience": [
     {
@@ -1121,6 +1122,6 @@
     "language": "es",
     "totalProjects": 15,
     "totalTechnologies": 81,
-    "experienceYears": 11
+    "experienceYears": 9
   }
 }

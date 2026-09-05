@@ -34,7 +34,7 @@ echo "========================================="
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-nvm use 22 2>/dev/null || true
+nvm use 2>/dev/null || true
 
 npm run build
 
@@ -81,5 +81,5 @@ lftp -c "
 echo ""
 echo "========================================="
 echo "  Deploy complete!"
-echo "  https://portafolio-andres.mindtechpy.net"
+echo "  https://andres.mindtechpy.net"
 echo "========================================="

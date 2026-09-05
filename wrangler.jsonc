@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "andres",
+  "compatibility_date": "2026-09-05",
+  // Sitio 100% estatico: no hay Worker script, solo assets.
+  // Cloudflare sirve dist/ directamente desde el edge.
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

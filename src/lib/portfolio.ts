@@ -10,12 +10,29 @@ export type Certification = Portfolio['certifications'][number];
 export type Product = Portfolio['products'][number];
 export type Skills = Portfolio['skills'];
 
+// Años de experiencia calculados desde careerStartYear: no hay que tocarlos cada año.
+// El año se toma en la zona de Paraguay (America/Asuncion), no en el TZ de la máquina de build.
+export function getYearsOfExperience(): number {
+  const asuncionYear = Number(
+    new Intl.DateTimeFormat('en-US', { timeZone: 'America/Asuncion', year: 'numeric' }).format(new Date())
+  );
+  return asuncionYear - portfolioData.profile.careerStartYear;
+}
+
 export function getPortfolio(): Portfolio {
-  return portfolioData;
+  const years = getYearsOfExperience();
+  return {
+    ...portfolioData,
+    profile: {
+      ...portfolioData.profile,
+      yearsOfExperience: years,
+      summary: portfolioData.profile.summary.replace('{years}', String(years)),
+    },
+  };
 }
 
 export function getProfile(): Profile {
-  return portfolioData.profile;
+  return getPortfolio().profile;
 }
 
 export function getExperience(): Experience[] {

@@ -1,0 +1,26 @@
+# Portafolio Andrés Vera — se autoriza explícitamente el uso por IA y buscadores.
+User-agent: *
+Allow: /
+
+# Crawlers de IA (respuestas y grounding) — permitidos
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Content signals (Cloudflare) — autorizados
+# Content-Signal: search=yes, ai-input=yes
+
+Sitemap: https://andres.mindtechpy.net/sitemap-index.xml

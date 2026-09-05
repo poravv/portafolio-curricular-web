@@ -72,7 +72,7 @@ export default function About({ profile, experience, projects }: AboutProps) {
   }, []);
 
   const stats: StatItem[] = [
-    { value: 11, suffix: '+', label: 'Años de Experiencia' },
+    { value: profile.yearsOfExperience, suffix: '', label: 'Años de Experiencia' },
     { value: 15, suffix: '+', label: 'Proyectos' },
     { value: 8, suffix: '+', label: 'Certificaciones' },
     { value: 3, suffix: '', label: 'Empresas' },

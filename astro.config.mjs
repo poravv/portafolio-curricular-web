@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://andresvera.dev',
+  site: 'https://andres.mindtechpy.net',
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),

@@ -330,7 +330,7 @@ export default function Hero({ profile }: HeroProps) {
               variants={staggerContainer}
               transition={reducedMotion ? undefined : { delayChildren: 0.65, staggerChildren: 0.12 }}
             >
-              <StatItem value={profile.yearsOfExperience} suffix="+" label="Años Exp." duration={1800} reducedMotion={reducedMotion} />
+              <StatItem value={profile.yearsOfExperience} suffix="" label="Años Exp." duration={1800} reducedMotion={reducedMotion} />
               <div className="w-px h-8 bg-border" aria-hidden="true" />
               <StatItem value={15} suffix="+" label="Proyectos" duration={1600} reducedMotion={reducedMotion} />
               <div className="w-px h-8 bg-border" aria-hidden="true" />

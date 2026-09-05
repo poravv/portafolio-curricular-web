@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# firebase debug log
+firebase-debug.log
+
+# agent tooling (no es codigo del sitio)
+.agents/
+
+# wrangler local state
+.wrangler/

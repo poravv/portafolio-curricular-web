@@ -1,16 +1,46 @@
 ---
 import '../styles/global.css';
 import StarfieldBackground from '../components/react/StarfieldBackground';
+import { getProfile, getSkills } from '../lib/portfolio';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
+const profile = getProfile();
+const skills = getSkills();
+
 const {
   title = 'Andres Vera | Technical Lead & Full-Stack Developer',
-  description = 'Portafolio profesional de Andres Valentin Vera Chavez. Technical Lead & Full-Stack Developer con 8+ anos de experiencia en Paraguay.',
+  description = `Portafolio profesional de ${profile.name}. ${profile.title} con ${profile.yearsOfExperience}+ anos de experiencia en Paraguay.`,
 } = Astro.props;
+
+// JSON-LD Person: lo que buscadores e IA parsean para describir/recomendar al dev.
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: profile.title,
+  description: profile.summary,
+  url: Astro.site?.href,
+  email: `mailto:${profile.contact.businessEmail}`,
+  worksFor: { '@type': 'Organization', name: profile.company },
+  address: { '@type': 'PostalAddress', addressLocality: profile.location, addressCountry: 'PY' },
+  knowsAbout: [
+    ...skills.languages,
+    ...skills.backendFrameworks,
+    ...skills.frontendFrameworks,
+    ...skills.infrastructure,
+    ...skills.cloud,
+  ],
+  sameAs: [
+    `https://github.com/${profile.contact.github}`,
+    `https://www.linkedin.com/in/${profile.contact.linkedin}`,
+    `https://www.instagram.com/${profile.contact.instagram}`,
+    `https://${profile.contact.website}`,
+  ],
+};
 ---
 
 <!doctype html>
@@ -35,6 +65,10 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- JSON-LD Person: para que buscadores/IA describan y recomienden al dev -->
+    <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+    <link rel="canonical" href={Astro.site?.href} />
 
     <!-- Dark mode: default dark, only switch to light if user explicitly chose it -->
     <script is:inline>
