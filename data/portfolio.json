@@ -61,7 +61,7 @@
     },
     {
       "id": "mindtechpy",
-      "company": "Freelance · MindTechPy",
+      "company": "MindTechPy",
       "role": "Fullstack Developer / DevOps",
       "location": "Capiatá, Paraguay",
       "current": true,
@@ -216,6 +216,7 @@
     {
       "id": "tigo-money-app",
       "name": "Tigo Money App",
+      "relation": "employer",
       "description": "App de billetera digital Tigo Money en Paraguay. Participación como Technical Lead / Fullstack en Edge Mobile Ideas: frontend en Flutter y backend Java/Node.js sobre AWS.",
       "category": "production",
       "tier": 1,
@@ -260,6 +261,7 @@
     {
       "id": "foxbox",
       "name": "FoxBox",
+      "relation": "client",
       "description": "Sitio web corporativo para FoxBox, servicio de courier internacional y casillero virtual. Importación de paquetes desde Miami, China, España y Argentina a Paraguay con seguimiento 24/7.",
       "category": "production",
       "tier": 1,
@@ -295,6 +297,7 @@
     {
       "id": "yvaga-acai",
       "name": "Yvága Açai",
+      "relation": "client",
       "description": "Sitio web para Yvága Açai, heladería artesanal en Itauguá: catálogo de açaí, helados y bowls, carrito y pedidos por WhatsApp.",
       "category": "production",
       "tier": 1,
@@ -330,6 +333,7 @@
     {
       "id": "cuenly",
       "name": "CuenlyApp",
+      "relation": "mindtechpy",
       "description": "SaaS con funcionalidades de IA para extracción de facturas y sistema de suscripciones con Pagopar. Incluye historial de transacciones y límites por plan.",
       "category": "production",
       "tier": 1,
@@ -366,7 +370,8 @@
     {
       "id": "ecommerce-capa",
       "name": "E-Commerce Capa",
-      "description": "Proyecto personal de e-commerce de ropa con variantes de producto, carrito en Redis, backoffice, zonas de envío en mapa y localizador de tiendas.",
+      "relation": "mindtechpy",
+      "description": "E-commerce de ropa con variantes de producto, carrito en Redis, backoffice, zonas de envío en mapa y localizador de tiendas.",
       "category": "production",
       "tier": 1,
       "techStack": [
@@ -418,6 +423,7 @@
     {
       "id": "impostor-app",
       "name": "El Impostor",
+      "relation": "mindtechpy",
       "description": "Juego multijugador de deducción social (estilo Among Us en formato web y mobile). Comunicación en tiempo real con Socket.IO y soporte multi-plataforma.",
       "category": "production",
       "tier": 1,
@@ -469,6 +475,7 @@
     {
       "id": "heredity",
       "name": "Heredity",
+      "relation": "mindtechpy",
       "description": "Árbol genealógico familiar en un lienzo interactivo. La vista es pública y compartible por link; editar requiere sesión y solo se entra por invitación.",
       "category": "production",
       "tier": 1,
@@ -511,8 +518,141 @@
       "architecture": "SPA + API REST (NestJS)"
     },
     {
+      "id": "punto-venta",
+      "name": "Sistema Punto de Venta",
+      "relation": "mindtechpy",
+      "description": "Sistema de punto de venta multi-empresa para Paraguay: ventas, caja, inventario por sucursal, compras, promociones, reportes de IVA y facturación electrónica vía SIFEN.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "NestJS",
+        "TypeORM",
+        "PostgreSQL",
+        "BullMQ",
+        "Redis",
+        "MinIO",
+        "React 19",
+        "Vite 7",
+        "Zustand",
+        "TanStack Query",
+        "Tailwind",
+        "Kubernetes"
+      ],
+      "features": [
+        "Flujo POS completo con caja registradora",
+        "Multi-empresa con aislamiento por organización",
+        "Inventario y transferencias entre sucursales",
+        "Promociones, cupones y compras",
+        "Facturación electrónica integrada con el servicio SIFEN",
+        "Roles y auditoría",
+        "Monorepo con pnpm workspaces"
+      ],
+      "status": "production",
+      "url": "https://pventa.mindtechpy.net",
+      "images": {
+        "logo": "/logos/punto-venta.webp",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2025-11-12",
+        "lastUpdate": "2026-10-03"
+      },
+      "highlights": [
+        "En producción con multi-empresa y auditorías de seguridad",
+        "Cumplimiento fiscal paraguayo: IVA 5%/10%, timbrado, CDC"
+      ],
+      "architecture": "Monolito modular por capas, monorepo"
+    },
+    {
+      "id": "accenova",
+      "name": "Accenova",
+      "relation": "mindtechpy",
+      "description": "Control de asistencia para empresas de Paraguay: app Android con geocerca, verificación facial y marcación sin señal, panel web en tiempo real y pre-liquidación de sueldos con IPS.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "NestJS",
+        "PostgreSQL 16 (RLS)",
+        "MinIO",
+        "Flutter",
+        "SQLite",
+        "React",
+        "Vite",
+        "Kubernetes"
+      ],
+      "features": [
+        "App Flutter offline-first con marcaciones firmadas (HMAC)",
+        "Geocerca GPS y verificación facial con prueba de vida",
+        "Multi-tenant con Row Level Security en PostgreSQL",
+        "Panel en tiempo real (SSE) con reportes de horas",
+        "Pre-liquidación en guaraníes con IPS",
+        "Publicada en Google Play"
+      ],
+      "status": "production",
+      "url": "https://accenova.mindtechpy.net",
+      "playStore": "https://play.google.com/store/apps/details?id=py.com.accenova.app",
+      "images": {
+        "logo": "/logos/accenova.webp",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2026-09-26",
+        "lastUpdate": "2026-10-03"
+      },
+      "highlights": [
+        "Arquitectura hexagonal por módulo, dominio sin framework",
+        "Multi-tenant con RLS real en PostgreSQL"
+      ],
+      "architecture": "Hexagonal + app móvil offline-first"
+    },
+    {
+      "id": "gift-hub",
+      "name": "Gift Hub",
+      "relation": "mindtechpy",
+      "description": "Plataforma de pedidos, clientes y fidelización con bot de WhatsApp sobre la API oficial de Meta. Es el bot de atención de MindTechPy: catálogo de servicios, cotizaciones, consultas y reuniones.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "Fastify 5",
+        "Prisma",
+        "PostgreSQL",
+        "MinIO",
+        "React 19",
+        "Vite",
+        "WhatsApp Cloud API",
+        "Kubernetes",
+        "Argo CD"
+      ],
+      "features": [
+        "Bot de WhatsApp con API oficial de Meta (webhooks firmados)",
+        "Pedidos, clientes y programa de fidelización",
+        "Solicitudes: cotización, consulta y reunión con adjuntos validados",
+        "Panel de administración con roles",
+        "Una imagen, varias instalaciones (multi-tenant)"
+      ],
+      "status": "production",
+      "url": "https://gifthub.mindtechpy.net",
+      "images": {
+        "logo": "/logos/gift-hub.webp",
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2026-09-14",
+        "lastUpdate": "2026-10-03"
+      },
+      "highlights": [
+        "Mensajes idempotentes y reprocesables: reintentar no duplica pedidos",
+        "Bot en producción atendiendo a MindTechPy"
+      ],
+      "architecture": "API + panel, saga por mensaje"
+    },
+    {
       "id": "web-mindtechpy",
       "name": "Web MindTechPy",
+      "relation": "mindtechpy",
       "description": "Sitio web corporativo de MindTechPy con diseño 'Observatorio Digital' en tema oscuro, modo dual clásico/moderno, showcase de productos y planes de precios.",
       "category": "advanced",
       "tier": 2,
@@ -564,6 +704,7 @@
     {
       "id": "pohapp",
       "name": "PohApp - Poha Ñhanapp",
+      "relation": "personal",
       "description": "Aplicación móvil de plantas medicinales paraguayas, publicada en Google Play. Proyecto de tesis.",
       "category": "advanced",
       "tier": 2,
@@ -595,54 +736,9 @@
       "architecture": "Mobile app (Flutter)"
     },
     {
-      "id": "punto-venta",
-      "name": "Sistema Punto de Venta",
-      "description": "Sistema de punto de venta para Paraguay en desarrollo: inventario, caja registradora, promociones y reportes de IVA.",
-      "category": "experimental",
-      "tier": 2,
-      "techStack": [
-        "NestJS 10",
-        "TypeORM",
-        "PostgreSQL",
-        "BullMQ",
-        "Redis",
-        "React 19",
-        "Vite 7",
-        "Zustand",
-        "TanStack Query",
-        "Tailwind",
-        "pnpm"
-      ],
-      "features": [
-        "35 entidades de dominio",
-        "23 páginas de interfaz",
-        "Flujo POS completo + facturación + caja registradora",
-        "4 roles: admin, gerencia, ventas, depósito",
-        "Sistema de promociones y cupones",
-        "Gestión de inventario y almacenes",
-        "Reportes de IVA",
-        "Monorepo con pnpm workspaces"
-      ],
-      "status": "development",
-      "url": null,
-      "images": {
-        "logo": null,
-        "ogImage": null,
-        "screenshots": []
-      },
-      "timeline": {
-        "startDate": "2024-09-01",
-        "lastUpdate": "2026-03-01"
-      },
-      "highlights": [
-        "Migración de autenticación de Keycloak a JWT nativo con NestJS",
-        "Cumplimiento fiscal paraguayo: IVA 5%/10%, PYG, timbrado, CDC"
-      ],
-      "architecture": "Layered/DDD, monorepo"
-    },
-    {
       "id": "electronico-sifen",
       "name": "Facturación Electrónica SIFEN (POC)",
+      "relation": "mindtechpy",
       "description": "Prueba de concepto de facturación electrónica para SIFEN (Paraguay): firma digital de XML y comunicación SOAP con mTLS contra el ambiente de pruebas.",
       "category": "experimental",
       "tier": 2,
@@ -680,6 +776,7 @@
     {
       "id": "biometric-identity-engine",
       "name": "Motor de Identidad Biométrica",
+      "relation": "mindtechpy",
       "description": "Plataforma B2B multi-tenant de verificación de identidad en desarrollo: gateway Java + engine de IA en Python con reconocimiento facial y detección de vida.",
       "category": "experimental",
       "tier": 2,
@@ -855,7 +952,7 @@
       "date": "2024-06-01",
       "type": "project_start",
       "project": "ecommerce-capa",
-      "description": "Inicio del e-commerce Capa (proyecto personal)"
+      "description": "Inicio del e-commerce Capa"
     },
     {
       "date": "2024-08-01",
@@ -864,10 +961,10 @@
       "description": "Inicio del desarrollo de CuenlyApp, SaaS con IA y Pagopar"
     },
     {
-      "date": "2024-09-01",
+      "date": "2025-11-12",
       "type": "project_start",
       "project": "punto-venta",
-      "description": "Inicio del sistema Punto de Venta con integración SIFEN"
+      "description": "Inicio del sistema Punto de Venta"
     },
     {
       "date": "2025-01-01",
@@ -900,12 +997,6 @@
       "description": "Pipeline de reconocimiento facial con detección de vida funcionando en desarrollo"
     },
     {
-      "date": "2026-02-01",
-      "type": "milestone",
-      "project": "punto-venta",
-      "description": "Migración de autenticación completada: Keycloak a NestJS JWT nativo"
-    },
-    {
       "date": "2026-03-01",
       "type": "milestone",
       "project": "ecommerce-capa",
@@ -934,13 +1025,25 @@
       "type": "project_start",
       "project": "yvaga-acai",
       "description": "Inicio del sitio web de Yvága Açai (cliente)"
+    },
+    {
+      "date": "2026-09-14",
+      "type": "project_start",
+      "project": "gift-hub",
+      "description": "Inicio de Gift Hub, pedidos y bot de WhatsApp"
+    },
+    {
+      "date": "2026-09-26",
+      "type": "project_start",
+      "project": "accenova",
+      "description": "Inicio de Accenova, control de asistencia con GPS"
     }
   ],
   "metadata": {
     "generatedAt": "2026-10-03",
     "version": "2.1.0",
     "language": "es",
-    "totalProjects": 12,
+    "totalProjects": 14,
     "totalTechnologies": 81,
     "experienceYears": 9
   }
