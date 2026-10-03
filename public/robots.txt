@@ -1,26 +1,21 @@
 # Portafolio Andrés Vera — se autoriza explícitamente el uso por IA y buscadores.
+# Content-Signal (https://contentsignals.org): search = indexar, ai-input = usar en respuestas de IA.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes
 Allow: /
 
-# Crawlers de IA (respuestas y grounding) — permitidos
+# Crawlers de IA (respuestas, búsqueda y fetch a pedido del usuario) — permitidos
 User-agent: GPTBot
-Allow: /
 User-agent: OAI-SearchBot
-Allow: /
 User-agent: ChatGPT-User
-Allow: /
 User-agent: ClaudeBot
-Allow: /
-User-agent: Claude-Web
-Allow: /
+User-agent: Claude-User
+User-agent: Claude-SearchBot
 User-agent: PerplexityBot
-Allow: /
+User-agent: Perplexity-User
 User-agent: Google-Extended
-Allow: /
 User-agent: Applebot-Extended
+Content-Signal: search=yes, ai-input=yes
 Allow: /
-
-# Content signals (Cloudflare) — autorizados
-# Content-Signal: search=yes, ai-input=yes
 
 Sitemap: https://andres.mindtechpy.net/sitemap-index.xml
