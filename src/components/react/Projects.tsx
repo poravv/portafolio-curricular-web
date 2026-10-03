@@ -26,6 +26,14 @@ function StatusLabel({ status }: { status: string }) {
       </span>
     );
   }
+  if (status === 'beta') {
+    return (
+      <span className="inline-flex items-center gap-1.5 font-mono text-caption text-fg-muted">
+        <span className="h-1.5 w-1.5 rounded-full border border-live" aria-hidden="true" />
+        Beta productiva
+      </span>
+    );
+  }
   return (
     <span className="inline-flex items-center gap-1.5 font-mono text-caption text-live">
       <span className="h-1.5 w-1.5 rounded-full bg-live" aria-hidden="true" />

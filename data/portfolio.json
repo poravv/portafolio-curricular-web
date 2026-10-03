@@ -62,7 +62,7 @@
     {
       "id": "mindtechpy",
       "company": "MindTechPy",
-      "role": "Fullstack Developer / DevOps",
+      "role": "Fullstack Developer",
       "location": "Capiatá, Paraguay",
       "current": true,
       "startDate": "2023-01-01",
@@ -72,7 +72,7 @@
         "Desarrollo web",
         "Aplicaciones móviles",
         "APIs y microservicios",
-        "DevOps y Kubernetes"
+        "Despliegue en Kubernetes"
       ],
       "clients": [
         {
@@ -521,7 +521,7 @@
       "id": "punto-venta",
       "name": "Sistema Punto de Venta",
       "relation": "mindtechpy",
-      "description": "Sistema de punto de venta multi-empresa para Paraguay: ventas, caja, inventario por sucursal, compras, promociones, reportes de IVA y facturación electrónica vía SIFEN.",
+      "description": "Sistema de punto de venta multi-empresa para Paraguay: ventas, caja, inventario por sucursal, compras, promociones y reportes de IVA.",
       "category": "production",
       "tier": 1,
       "techStack": [
@@ -543,7 +543,6 @@
         "Multi-empresa con aislamiento por organización",
         "Inventario y transferencias entre sucursales",
         "Promociones, cupones y compras",
-        "Facturación electrónica integrada con el servicio SIFEN",
         "Roles y auditoría",
         "Monorepo con pnpm workspaces"
       ],
@@ -650,6 +649,53 @@
       "architecture": "API + panel, saga por mensaje"
     },
     {
+      "id": "electronico-sifen",
+      "name": "Facturación Electrónica SIFEN",
+      "relation": "mindtechpy",
+      "description": "Middleware de facturación electrónica para SIFEN (Paraguay): API REST para que ERP, POS o e-commerce resuelvan la capa fiscal completa (CDC, XML, firma digital, SOAP con mTLS). Multi-emisor, con dashboard de administración. En beta productiva.",
+      "category": "production",
+      "tier": 1,
+      "techStack": [
+        "Java 21",
+        "Spring Boot 3.5",
+        "Spring Security",
+        "PostgreSQL 15",
+        "Liquibase",
+        "Redis 7",
+        "SOAP 1.2",
+        "mTLS",
+        "XMLDSig",
+        "OpenPDF",
+        "React",
+        "Kubernetes",
+        "Argo CD"
+      ],
+      "features": [
+        "Generación de CDC y XML, firma digital XMLDSig",
+        "Envío a SIFEN por SOAP 1.2 con mTLS",
+        "KuDE en PDF con código QR",
+        "Email por emisor con credenciales cifradas (AES-256-GCM)",
+        "Multi-emisor con API Key y JWT",
+        "Dashboard de administración"
+      ],
+      "status": "beta",
+      "url": null,
+      "images": {
+        "logo": null,
+        "ogImage": null,
+        "screenshots": []
+      },
+      "timeline": {
+        "startDate": "2026-02-21",
+        "lastUpdate": "2026-09-30"
+      },
+      "highlights": [
+        "Arquitectura hexagonal, multi-tenant por emisor",
+        "Beta productiva en Kubernetes con GitOps (Argo CD)"
+      ],
+      "architecture": "Hexagonal"
+    },
+    {
       "id": "web-mindtechpy",
       "name": "Web MindTechPy",
       "relation": "mindtechpy",
@@ -734,44 +780,6 @@
         "Disponible en Google Play Store"
       ],
       "architecture": "Mobile app (Flutter)"
-    },
-    {
-      "id": "electronico-sifen",
-      "name": "Facturación Electrónica SIFEN (POC)",
-      "relation": "mindtechpy",
-      "description": "Prueba de concepto de facturación electrónica para SIFEN (Paraguay): firma digital de XML y comunicación SOAP con mTLS contra el ambiente de pruebas.",
-      "category": "experimental",
-      "tier": 2,
-      "techStack": [
-        "Java 21",
-        "Spring Boot",
-        "JAXB",
-        "Spring WS",
-        "SOAP 1.2",
-        "mTLS",
-        "PostgreSQL"
-      ],
-      "features": [
-        "Firma digital de XML",
-        "Cliente SOAP 1.2 con mTLS",
-        "Generación de código QR",
-        "Pruebas contra el ambiente de test de SIFEN"
-      ],
-      "status": "development",
-      "url": null,
-      "images": {
-        "logo": null,
-        "ogImage": null,
-        "screenshots": []
-      },
-      "timeline": {
-        "startDate": "2024-03-01",
-        "lastUpdate": "2026-03-01"
-      },
-      "highlights": [
-        "POC en ambiente de pruebas, no en producción"
-      ],
-      "architecture": "Hexagonal"
     },
     {
       "id": "biometric-identity-engine",
@@ -922,7 +930,7 @@
       "date": "2023-01-01",
       "type": "project_start",
       "project": "mindtechpy",
-      "description": "Inicio como Fullstack Developer / DevOps freelance (MindTechPy)"
+      "description": "Inicio como Fullstack Developer en MindTechPy"
     },
     {
       "date": "2023-06-01",
@@ -943,10 +951,10 @@
       "description": "Inicio como Technical Lead / Fullstack Developer en Edge Mobile Ideas"
     },
     {
-      "date": "2024-03-01",
+      "date": "2026-02-21",
       "type": "project_start",
       "project": "electronico-sifen",
-      "description": "POC de facturación electrónica SIFEN (firma XML, mTLS, SOAP)"
+      "description": "Inicio del middleware de facturación electrónica SIFEN"
     },
     {
       "date": "2024-06-01",
