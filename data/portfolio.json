@@ -25,7 +25,7 @@
       "company": "Edge Mobile Ideas",
       "role": "Technical Lead / Fullstack Developer",
       "location": "Paraguay",
-      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/79/d9/9e/79d99eaf-aa8e-2392-781f-a94970a7627b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png",
+      "logo": "/logos/tigo-money.webp",
       "current": true,
       "startDate": "2024-03-01",
       "endDate": null,
@@ -243,7 +243,7 @@
       "status": "production",
       "url": null,
       "images": {
-        "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/79/d9/9e/79d99eaf-aa8e-2392-781f-a94970a7627b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png",
+        "logo": "/logos/tigo-money.webp",
         "ogImage": null,
         "screenshots": []
       },
@@ -279,7 +279,7 @@
       "status": "production",
       "url": "https://foxbox.com.py/",
       "images": {
-        "logo": "/logos/logo-foxbox.png",
+        "logo": "/logos/foxbox.webp",
         "ogImage": null,
         "screenshots": []
       },
@@ -313,7 +313,7 @@
       "status": "production",
       "url": "https://yvaga-acai.com.py/",
       "images": {
-        "logo": "/logos/logo-yvaga-acai.webp",
+        "logo": "/logos/yvaga-acai.webp",
         "ogImage": "https://yvaga-acai.com.py/assets/og-cover.jpg",
         "screenshots": []
       },
@@ -348,7 +348,7 @@
       "status": "production",
       "url": "https://app.cuenly.com/",
       "images": {
-        "logo": "https://app.cuenly.com/assets/logo.png",
+        "logo": "/logos/cuenly.webp",
         "hero": "https://cuenly.com/assets/hero/hero-image.png",
         "ogImage": null,
         "screenshots": []
@@ -395,7 +395,7 @@
       "status": "production",
       "url": "https://capa.mindtechpy.net",
       "images": {
-        "logo": "https://capa.mindtechpy.net/logo.png",
+        "logo": "/logos/capa.webp",
         "icon": "https://capa.mindtechpy.net/icon.png",
         "ogImage": null,
         "screenshots": []
@@ -444,7 +444,7 @@
       "status": "production",
       "url": "https://impostor.mindtechpy.net",
       "images": {
-        "logo": "https://impostor.mindtechpy.net/mascot.png",
+        "logo": "/logos/impostor.webp",
         "icon": "https://impostor.mindtechpy.net/icon.png",
         "ogImage": "https://impostor.mindtechpy.net/og.jpg",
         "screenshots": []
@@ -496,7 +496,7 @@
       "status": "production",
       "url": "https://heredity.mindtechpy.net",
       "images": {
-        "logo": "/logos/logo-heredity.png",
+        "logo": "/logos/heredity.webp",
         "ogImage": null,
         "screenshots": []
       },
@@ -532,7 +532,7 @@
       "status": "production",
       "url": "https://mindtechpy.net",
       "images": {
-        "logo": "https://mindtechpy.net/images/mindtechpy-logo.png",
+        "logo": "/logos/mindtechpy.webp",
         "techIcons": [
           "https://mindtechpy.net/images/tech/react.png",
           "https://mindtechpy.net/images/tech/angular.png",
@@ -580,7 +580,7 @@
       "url": null,
       "playStore": "https://play.google.com/store/apps/details?id=com.nhanapp.pohapp&hl=es_PY",
       "images": {
-        "logo": "https://play-lh.googleusercontent.com/4Swkz57Vm_-72k-aTJPejxdK_9B4GVkeUro2OkJ6IqamW3XMlF_zVe5zmKC5U8zR6Q=w240-h480-rw",
+        "logo": "/logos/pohapp.webp",
         "ogImage": null,
         "screenshots": []
       },
