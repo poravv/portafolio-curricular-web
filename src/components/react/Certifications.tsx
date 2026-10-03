@@ -1,130 +1,50 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { Award } from 'lucide-react';
-
-interface CertificationEntry {
-  id: string;
-  name: string;
-  issuer: string;
-  date: string;
-  logo?: string;
-}
+import type { Certification } from '@/lib/portfolio';
+import Section from './ui/Section';
 
 interface CertificationsProps {
-  certifications: CertificationEntry[];
+  certifications: Certification[];
 }
 
-function formatCertDate(dateStr: string): string {
-  // Handle "YYYY-MM" format
-  if (dateStr.includes('-')) {
-    const date = new Date(dateStr + '-01T00:00:00');
-    return date.toLocaleDateString('es-PY', { month: 'long', year: 'numeric' });
-  }
-  // Handle "YYYY" format
-  return dateStr;
+function formatDate(date: string): string {
+  if (!date.includes('-')) return date;
+  return new Date(`${date}-01T00:00:00`).toLocaleDateString('es-PY', { month: 'short', year: 'numeric' });
 }
 
-function sortByDateDesc(certs: CertificationEntry[]): CertificationEntry[] {
-  return [...certs].sort((a, b) => {
-    const dateA = a.date.includes('-') ? new Date(a.date + '-01') : new Date(a.date + '-01-01');
-    const dateB = b.date.includes('-') ? new Date(b.date + '-01') : new Date(b.date + '-01-01');
-    return dateB.getTime() - dateA.getTime();
-  });
-}
-
-function CertLogo({ logo, issuer }: { logo?: string; issuer: string }) {
-  const [failed, setFailed] = useState(false);
-
-  if (!logo || failed) {
-    return <Award className="w-6 h-6 text-primary-light" aria-hidden="true" />;
-  }
-
-  return (
-    <img
-      src={logo}
-      alt={`${issuer} logo`}
-      className="w-10 h-10 object-contain"
-      loading="lazy"
-      onError={() => setFailed(true)}
-    />
-  );
-}
-
+/** Certifications (entries with an issuer badge) featured first, then courses as a compact list. */
 export default function Certifications({ certifications }: CertificationsProps) {
-  const reducedMotion = useReducedMotion();
-
-  const viewportConfig = { once: true, amount: 0.2 as const };
-  const motionProps = reducedMotion
-    ? {}
-    : { initial: 'hidden' as const, whileInView: 'visible' as const, viewport: viewportConfig };
-
-  const sorted = sortByDateDesc(certifications);
+  const sorted = [...certifications].sort((a, b) => b.date.localeCompare(a.date));
+  const featured = sorted.filter((c) => 'logo' in c);
+  const courses = sorted.filter((c) => !('logo' in c));
 
   return (
-    <section id="certifications" className="section-padding relative overflow-hidden">
-      {/* Ambient glow */}
-      <div
-        className="pointer-events-none absolute -top-40 left-1/4 w-[500px] h-[500px] rounded-full bg-accent-amber/5 blur-3xl"
-        aria-hidden="true"
-      />
+    <Section id="certifications" index="06" title="Certificación y cursos">
+      <ul className="space-y-4" role="list">
+        {featured.map((cert) => (
+          <li key={cert.id} className="flex items-center gap-5 border border-line bg-surface p-5">
+            {'logo' in cert && (
+              <img src={cert.logo} alt="" width={56} height={56} loading="lazy" className="h-14 w-14 flex-none object-contain" />
+            )}
+            <div>
+              <h3 className="font-display text-h3 text-fg">{cert.name}</h3>
+              <p className="mt-1 text-body-sm text-fg-muted">
+                {cert.issuer} · <span className="font-mono text-caption">{formatDate(cert.date)}</span>
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
 
-      <div className="mx-auto max-w-container container-padding relative">
-        {/* Section label */}
-        <div className="flex items-center gap-3 mb-4" aria-hidden="true">
-          <span className="section-number">06</span>
-          <div className="flex-1 h-px bg-border" />
-        </div>
-
-        {/* Section heading */}
-        <motion.div variants={fadeUp} {...motionProps} className="mb-12 md:mb-16">
-          <p className="text-label uppercase tracking-widest text-primary-light mb-3">
-            Certificaciones
-          </p>
-          <h2 className="text-h2-mobile md:text-h2 font-heading gradient-text">
-            Cursos y Certificaciones
-          </h2>
-        </motion.div>
-
-        {/* Cards grid */}
-        <motion.div
-          variants={staggerContainer}
-          {...motionProps}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
-        >
-          {sorted.map((cert) => (
-            <motion.div
-              key={cert.id}
-              variants={staggerItem}
-              className="glass-card p-5 md:p-6 group hover:border-primary/30 hover:-translate-y-1 hover:shadow-glow-sm transition-all duration-300 flex flex-col"
-            >
-              {/* Logo or icon */}
-              <div className="flex items-start gap-4 mb-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
-                  <CertLogo logo={cert.logo} issuer={cert.issuer} />
-                </div>
-
-                {/* Date badge */}
-                <span className="ml-auto inline-flex items-center rounded-full px-3 py-1 text-caption font-semibold bg-primary/10 text-primary-light border border-primary/20">
-                  {formatCertDate(cert.date)}
-                </span>
-              </div>
-
-              {/* Name */}
-              <h3 className="text-h3 font-heading text-slate-900 dark:text-text-primary leading-tight mb-2">
-                {cert.name}
-              </h3>
-
-              {/* Issuer */}
-              <div className="mt-auto flex items-center gap-2 text-body-sm text-slate-600 dark:text-text-secondary">
-                <Award className="w-4 h-4 text-primary-light flex-shrink-0" aria-hidden="true" />
-                <span>{cert.issuer}</span>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+      <ul className="mt-8 border-t border-line" role="list">
+        {courses.map((course) => (
+          <li key={course.id} className="grid gap-1 border-b border-line py-4 sm:grid-cols-[10rem_1fr] sm:gap-6">
+            <p className="font-mono text-caption text-fg-subtle sm:pt-0.5">{formatDate(course.date)}</p>
+            <p className="text-body-sm text-fg">
+              {course.name}
+              <span className="text-fg-muted"> — {course.issuer}</span>
+            </p>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 }

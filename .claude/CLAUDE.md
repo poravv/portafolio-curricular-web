@@ -4,7 +4,7 @@
 Sitio web de portafolio curricular profesional. Objetivo: crear la mejor web de portafolio con diseño responsivo, animaciones de alta calidad, y experiencia de usuario excepcional.
 
 ## Tech Stack
-- **Astro 6** (`output: 'static'`) + **React 19** (islas, `client:visible`) + **Tailwind CSS 3** + **Framer Motion 12** + TypeScript
+- **Astro 6** (`output: 'static'`) + **React 19** (componentes renderizados a HTML estático; solo `Contact` hidrata con `client:visible`) + **Tailwind CSS 3** + TypeScript
 - **Node 24.20.0 LTS** — fijado en `.nvmrc` y `.node-version`
 - Contenido: fuente única en `data/portfolio.json`, acceso tipado vía `src/lib/portfolio.ts`
 

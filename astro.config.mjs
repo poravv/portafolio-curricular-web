@@ -11,9 +11,4 @@ export default defineConfig({
     sitemap(),
   ],
   output: 'static',
-  vite: {
-    ssr: {
-      noExternal: ['framer-motion'],
-    },
-  },
 });

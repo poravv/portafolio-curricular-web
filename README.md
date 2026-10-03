@@ -4,7 +4,7 @@ Portafolio profesional estático. Todo el contenido (perfil, experiencia, skills
 proyectos, certificaciones) vive en un único JSON: **`data/portfolio.json`**.
 
 - **Producción**: https://andres.mindtechpy.net
-- **Stack**: Astro 6 (output estático) · React 19 · Tailwind CSS 3 · Framer Motion 12 · TypeScript
+- **Stack**: Astro 6 (output estático) · React 19 · Tailwind CSS 3 · TypeScript
 - **Node**: 24.20.0 LTS (fijado en `.nvmrc` y `.node-version`)
 
 ## Correr en local

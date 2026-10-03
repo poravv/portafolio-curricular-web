@@ -18,14 +18,15 @@ const portfolio = getPortfolio();
 <Layout>
   <Navbar />
   <main id="main-content">
-    <Hero client:load profile={portfolio.profile} />
-    <About client:visible profile={portfolio.profile} experience={portfolio.experience} projects={portfolio.projects} />
-    <Experience client:visible experience={portfolio.experience} />
-    <Skills client:visible skills={portfolio.skills} />
-    <Projects client:visible projects={portfolio.projects} />
-    <Education client:visible education={portfolio.education} />
-    <Certifications client:visible certifications={portfolio.certifications} />
+    {/* Only Contact needs JS (copy button, local clock); the rest renders to static HTML. */}
+    <Hero profile={portfolio.profile} experience={portfolio.experience} certifications={portfolio.certifications} />
+    <About profile={portfolio.profile} projects={portfolio.projects} />
+    <Experience experience={portfolio.experience} projects={portfolio.projects} />
+    <Skills skills={portfolio.skills} />
+    <Projects projects={portfolio.projects} />
+    <Education education={portfolio.education} />
+    <Certifications certifications={portfolio.certifications} />
     <Contact client:visible profile={portfolio.profile} />
   </main>
-  <Footer profile={portfolio.profile} />
+  <Footer />
 </Layout>

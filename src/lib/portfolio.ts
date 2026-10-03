@@ -43,8 +43,32 @@ export function getProjects(): Project[] {
   return portfolioData.projects;
 }
 
-export function getProjectsByTier(tier: number): Project[] {
-  return portfolioData.projects.filter((p: any) => p.tier === tier);
+/** Short display name: first given name + first surname ("Andrés Vera"). */
+export function getShortName(fullName: string): string {
+  const [first, , surname] = fullName.split(' ');
+  return surname ? `${first} ${surname}` : fullName;
+}
+
+export type ProjectRelation =
+  | { kind: 'client'; label: string }
+  | { kind: 'employer'; label: string }
+  | { kind: 'own'; label: string };
+
+/**
+ * Who the project was built for, derived from experience so the JSON stays the single source:
+ * a client listed under an experience entry, work done at an employer named in the description,
+ * or otherwise an own project.
+ */
+export function getProjectRelation(project: Project): ProjectRelation {
+  const clientNames = portfolioData.experience.flatMap((e) => e.clients?.map((c) => c.name) ?? []);
+  if (clientNames.includes(project.name)) return { kind: 'client', label: 'Cliente' };
+
+  const employer = portfolioData.experience.find(
+    (e) => !e.clients && project.description.includes(e.company)
+  );
+  if (employer) return { kind: 'employer', label: employer.company };
+
+  return { kind: 'own', label: 'Proyecto propio' };
 }
 
 export function getTimeline(): TimelineEntry[] {

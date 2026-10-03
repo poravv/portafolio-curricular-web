@@ -1,5 +1,4 @@
 @import '@fontsource-variable/inter';
-@import '@fontsource-variable/space-grotesk';
 @import '@fontsource/jetbrains-mono/400.css';
 @import '@fontsource/jetbrains-mono/500.css';
 
@@ -8,240 +7,98 @@
 @tailwind utilities;
 
 @layer base {
+  /* Theme tokens as RGB channels (consumed by tailwind.config.mjs).
+     Light = warm paper; dark = warm ink. One accent per theme, tuned for AA. */
   :root {
-    --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    color-scheme: light;
+    --bg: 246 244 239;
+    --surface: 255 255 255;
+    --surface-2: 236 233 225;
+    --line: 219 214 203;
+    --line-strong: 176 170 157;
+    --fg: 24 23 20;
+    --fg-muted: 79 76 69;
+    --fg-subtle: 104 100 92;
+    --accent: 178 66 16;
+    --accent-fg: 255 255 255;
+    --live: 21 120 58;
+    --logo-tile: 255 255 255;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --bg: 15 15 13;
+    --surface: 23 23 20;
+    --surface-2: 32 31 28;
+    --line: 45 44 40;
+    --line-strong: 82 80 73;
+    --fg: 237 234 228;
+    --fg-muted: 170 166 157;
+    --fg-subtle: 143 139 130;
+    --accent: 240 132 80;
+    --accent-fg: 24 12 4;
+    --live: 92 214 136;
+    --logo-tile: 245 243 238;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: theme('spacing.header');
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-bg-base text-text-primary font-body;
+    @apply bg-bg font-body text-fg;
     overflow-x: hidden;
   }
 
-  /* Grain overlay — decorative film grain effect */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    pointer-events: none;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-size: 150px 150px;
-    animation: grain 0.5s steps(1) infinite;
-  }
-
   ::selection {
-    @apply bg-primary/30 text-white;
+    @apply bg-accent text-accent-fg;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
+    @apply rounded-sm outline outline-2 outline-offset-2 outline-accent;
   }
 
-  /* Skip to content */
   .skip-to-content {
-    @apply absolute -top-full left-4 z-[100] rounded-md bg-primary px-4 py-2 text-white transition-all focus:top-4;
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-bg-deep;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary/30 rounded-full hover:bg-primary/50;
+    @apply absolute -top-full left-4 z-[200] rounded-sm bg-fg px-4 py-2 text-bg focus:top-4;
   }
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-bg-glass backdrop-blur-xl border border-border-glass rounded-2xl;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  .container-page {
+    @apply mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8;
   }
 
-  .glass-nav {
-    @apply bg-bg-glass/80 backdrop-blur-xl border-b border-border;
+  .eyebrow {
+    @apply font-mono text-label uppercase text-fg-subtle;
   }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-light via-primary to-secondary;
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm border px-5 text-body-sm font-medium transition-colors duration-200;
   }
 
-  .glow-border {
-    @apply border border-border-glass hover:border-primary/30 transition-colors duration-250;
+  .btn-primary {
+    @apply btn border-fg bg-fg text-bg hover:border-accent hover:bg-accent hover:text-accent-fg;
   }
 
-  .section-padding {
-    @apply py-section-mobile md:py-section;
+  .btn-secondary {
+    @apply btn border-line-strong text-fg hover:border-fg hover:bg-surface;
   }
 
-  .container-padding {
-    @apply px-4 md:px-6 lg:px-8;
-  }
-
-  /* Section number label */
-  .section-number {
-    @apply text-xs font-mono font-medium tracking-widest text-text-muted uppercase;
-    letter-spacing: 0.25em;
-  }
-
-  /* Per-card accent theming via CSS custom property */
-  .card-accented {
-    border-top: 1px solid var(--card-accent, theme('colors.primary.DEFAULT'));
-    box-shadow: 0 0 30px color-mix(in srgb, var(--card-accent, #8B5CF6) 10%, transparent);
-  }
-  .card-accented:hover {
-    box-shadow: 0 0 50px color-mix(in srgb, var(--card-accent, #8B5CF6) 20%, transparent);
-  }
-
-  /* Floating pill navbar */
-  .nav-pill {
-    @apply backdrop-blur-xl rounded-full border border-white/10;
-    background: rgba(10, 10, 15, 0.85);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.4);
-  }
-
-  /* Scroll progress bar */
-  .scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #8B5CF6, #06B6D4, #F43F5E);
-    transform-origin: left;
-    z-index: 200;
-    transform: scaleX(0);
+  .link {
+    @apply text-fg underline decoration-line-strong decoration-1 underline-offset-4 transition-colors duration-200 hover:text-accent hover:decoration-accent;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .animate-in {
-    animation-fill-mode: both;
-  }
-}
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* ── Light mode — comprehensive design ──────────────────────────────────── */
-:root:not(.dark) body {
-  background-color: #F1F3F9;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 15% -5%, rgba(139, 92, 246, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 45% at 85% 105%, rgba(6, 182, 212, 0.08) 0%, transparent 55%);
-  color: #0F172A;
-}
-
-/* Starfield canvas: hidden in light mode */
-:root:not(.dark) canvas { display: none; }
-
-/* Blobs: softer in light mode */
-:root:not(.dark) [style*="radial-gradient(circle, rgba(139"] { opacity: 0.45 !important; }
-:root:not(.dark) [style*="radial-gradient(circle, rgba(6"]   { opacity: 0.35 !important; }
-:root:not(.dark) [style*="radial-gradient(circle, rgba(244"]  { opacity: 0.20 !important; }
-
-/* Grain overlay: barely visible */
-:root:not(.dark) body::after { opacity: 0.015; }
-
-/* ── Text ───────────────────────────────────────────────────────────────── */
-:root:not(.dark) .text-text-primary   { color: #0F172A; }
-:root:not(.dark) .text-text-secondary { color: #475569; }
-:root:not(.dark) .text-text-muted     { color: #64748B; }
-
-/* ── Gradient text ──────────────────────────────────────────────────────── */
-:root:not(.dark) .gradient-text {
-  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 45%, #0891B2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ── Surfaces & backgrounds ─────────────────────────────────────────────── */
-:root:not(.dark) .bg-bg-glass,
-:root:not(.dark) .bg-bg-glass\/40,
-:root:not(.dark) .bg-bg-glass\/60,
-:root:not(.dark) .bg-bg-glass\/80     { background-color: rgba(255, 255, 255, 0.80); }
-:root:not(.dark) .bg-bg-elevated\/80  { background-color: rgba(255, 255, 255, 0.92); }
-:root:not(.dark) .bg-bg-deep\/40      { background-color: rgba(226, 232, 240, 0.70); }
-:root:not(.dark) .bg-bg-base          { background-color: #F1F3F9; }
-
-/* hover whites → hover dark */
-:root:not(.dark) .hover\:bg-white\/5:hover  { background-color: rgba(0, 0, 0, 0.04); }
-:root:not(.dark) .hover\:bg-white\/10:hover { background-color: rgba(0, 0, 0, 0.07); }
-:root:not(.dark) .bg-white\/5  { background-color: rgba(0, 0, 0, 0.03); }
-:root:not(.dark) .bg-white\/10 { background-color: rgba(0, 0, 0, 0.05); }
-
-/* ── Borders ────────────────────────────────────────────────────────────── */
-:root:not(.dark) .border-border         { border-color: rgba(0, 0, 0, 0.09); }
-:root:not(.dark) .border-border-glass   { border-color: rgba(139, 92, 246, 0.18); }
-:root:not(.dark) .border-white\/10      { border-color: rgba(0, 0, 0, 0.07); }
-:root:not(.dark) .border-white\/5       { border-color: rgba(0, 0, 0, 0.04); }
-
-/* ── Components ─────────────────────────────────────────────────────────── */
-:root:not(.dark) .glass-card {
-  background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(0, 0, 0, 0.07);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04),
-              inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-}
-:root:not(.dark) .glass-card:hover {
-  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.10), 0 2px 8px rgba(0, 0, 0, 0.06),
-              inset 0 1px 0 rgba(255, 255, 255, 0.95);
-}
-
-:root:not(.dark) .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(0, 0, 0, 0.07);
-}
-
-:root:not(.dark) .nav-pill {
-  background: rgba(255, 255, 255, 0.90) !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.09) !important;
-}
-
-:root:not(.dark) .section-number { color: #94A3B8; }
-
-:root:not(.dark) .card-accented {
-  box-shadow: 0 0 20px color-mix(in srgb, var(--card-accent, #8B5CF6) 7%, transparent);
-}
-:root:not(.dark) .card-accented:hover {
-  box-shadow: 0 0 40px color-mix(in srgb, var(--card-accent, #8B5CF6) 14%, transparent);
-}
-
-/* ── Scroll progress bar ────────────────────────────────────────────────── */
-:root:not(.dark) .scroll-progress {
-  background: linear-gradient(90deg, #7C3AED, #06B6D4, #E11D48);
-}
-
-/* ── Scrollbar ──────────────────────────────────────────────────────────── */
-:root:not(.dark) ::-webkit-scrollbar-track { background: #E2E8F0; }
-:root:not(.dark) ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.25); }
-
-/* ── Selection ──────────────────────────────────────────────────────────── */
-:root:not(.dark) ::selection {
-  background: rgba(139, 92, 246, 0.15);
-  color: #0F172A;
 }

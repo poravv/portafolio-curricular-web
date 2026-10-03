@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
-import StarfieldBackground from '../components/react/StarfieldBackground';
-import { getProfile, getSkills } from '../lib/portfolio';
+import { getProfile, getShortName, getSkills } from '../lib/portfolio';
 
 interface Props {
   title?: string;
@@ -12,8 +11,8 @@ const profile = getProfile();
 const skills = getSkills();
 
 const {
-  title = 'Andres Vera | Technical Lead & Full-Stack Developer',
-  description = `Portafolio profesional de ${profile.name}. ${profile.title} con ${profile.yearsOfExperience}+ anos de experiencia en Paraguay.`,
+  title = `${getShortName(profile.name)} | ${profile.title}`,
+  description = `Portafolio profesional de ${profile.name}. ${profile.title} con ${profile.yearsOfExperience} años de experiencia en Paraguay.`,
 } = Astro.props;
 
 // JSON-LD Person: lo que buscadores e IA parsean para describir/recomendar al dev.
@@ -49,7 +48,7 @@ const personLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="author" content="Andres Valentin Vera Chavez" />
+    <meta name="author" content={profile.name} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -63,6 +62,12 @@ const personLd = {
     <meta name="twitter:description" content={description} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
@@ -70,45 +75,15 @@ const personLd = {
     <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
     <link rel="canonical" href={Astro.site?.href} />
 
-    <!-- Dark mode: default dark, only switch to light if user explicitly chose it -->
+    <!-- Default dark; light only when the visitor chose it. Runs before paint to avoid a flash. -->
     <script is:inline>
       try {
-        const saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else {
-          // First visit or explicit dark: force dark and persist
-          document.documentElement.classList.add('dark');
-          if (!saved) localStorage.setItem('theme', 'dark');
-        }
-      } catch (e) {
-        document.documentElement.classList.add('dark');
-      }
+        if (localStorage.getItem('theme') === 'light') document.documentElement.classList.remove('dark');
+      } catch (e) {}
     </script>
   </head>
-  <body class="min-h-dvh pt-20">
-    <!-- Scroll progress bar -->
-    <div class="scroll-progress" id="scroll-progress"></div>
-
-    <a href="#main-content" class="skip-to-content">
-      Saltar al contenido principal
-    </a>
-
-    <!-- Starfield background: fixed, z-0, decorative -->
-    <StarfieldBackground client:load />
-
+  <body class="min-h-dvh pt-header">
+    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
     <slot />
-
-    <script>
-      const progress = document.getElementById('scroll-progress');
-      const updateProgress = () => {
-        if (!progress) return;
-        const scrollY = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = docHeight > 0 ? scrollY / docHeight : 0;
-        progress.style.transform = `scaleX(${percent})`;
-      };
-      window.addEventListener('scroll', updateProgress, { passive: true });
-    </script>
   </body>
 </html>

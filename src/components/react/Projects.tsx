@@ -1,400 +1,190 @@
-import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { staggerContainer, staggerItem } from '../../lib/animations';
-import {
-  ExternalLink,
-  Smartphone,
-  Sparkles,
-  ChevronRight,
-  ChevronDown,
-  Check,
-} from 'lucide-react';
-
-interface Project {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  tier: number;
-  techStack: string[];
-  features: string[];
-  status: string;
-  url?: string | null;
-  playStore?: string;
-  images?: {
-    logo?: string | null;
-    icon?: string | null;
-    ogImage?: string | null;
-    hero?: string | null;
-    screenshots?: string[];
-  };
-  meta?: {
-    title?: string;
-    description?: string;
-  };
-  timeline: {
-    startDate: string;
-    lastUpdate: string;
-  };
-  highlights: string[];
-  architecture: string;
-  employer?: string;
-  client?: string;
-}
+import { ArrowUpRight, ChevronDown, FlaskConical, Smartphone } from 'lucide-react';
+import { getProjectRelation, type Project } from '@/lib/portfolio';
+import Section from './ui/Section';
+import TagList from './ui/TagList';
 
 interface ProjectsProps {
   projects: Project[];
 }
 
-type FilterKey = 'all' | 'production' | 'beta' | 'development';
+const MAX_TAGS = 5;
 
-const ACCENT_COLORS = ['#8B5CF6', '#06B6D4', '#F43F5E', '#22C55E', '#F59E0B', '#8B5CF6', '#06B6D4'] as const;
-
-const filters: { key: FilterKey; label: string }[] = [
-  { key: 'all', label: 'Todos' },
-  { key: 'production', label: 'Producción' },
-  { key: 'beta', label: 'Beta' },
-  { key: 'development', label: 'En Desarrollo' },
-];
-
-const statusConfig: Record<string, { label: string; color: string; dot: string }> = {
-  production: {
-    label: 'Producción',
-    color: 'text-accent-green border-accent-green/30 bg-accent-green/10',
-    dot: 'bg-accent-green',
-  },
-  development: {
-    label: 'Desarrollo',
-    color: 'text-accent-amber border-accent-amber/30 bg-accent-amber/10',
-    dot: 'bg-accent-amber',
-  },
-  active: {
-    label: 'Activo',
-    color: 'text-accent-cyan border-accent-cyan/30 bg-accent-cyan/10',
-    dot: 'bg-accent-cyan',
-  },
-  beta: {
-    label: 'Beta',
-    color: 'text-secondary border-secondary/30 bg-secondary/10',
-    dot: 'bg-secondary',
-  },
-};
-
-function getInitials(name: string): string {
-  return name
-    .split(/\s+/)
-    .map((w) => w[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase();
+function hostname(url: string): string {
+  return new URL(url).hostname.replace(/^www\./, '');
 }
 
-const MAX_VISIBLE_TECH = 5;
+function playStoreUrl(project: Project): string | null {
+  return 'playStore' in project && project.playStore ? project.playStore : null;
+}
 
-export default function Projects({ projects }: ProjectsProps) {
-  const [activeFilter, setActiveFilter] = useState<FilterKey>('all');
-
-  const filtered = useMemo(() => {
-    if (activeFilter === 'all') return projects;
-    return projects.filter((p) => p.status === activeFilter);
-  }, [activeFilter, projects]);
-
+function StatusLabel({ status }: { status: string }) {
+  if (status === 'development') {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-sm border border-dashed border-line-strong px-2 py-0.5 font-mono text-caption text-fg-muted">
+        <FlaskConical className="h-3.5 w-3.5" aria-hidden="true" />
+        En desarrollo
+      </span>
+    );
+  }
   return (
-    <section id="projects" className="section-padding" aria-label="Proyectos">
-      <div className="mx-auto max-w-container container-padding">
-        {/* Section label */}
-        <div className="flex items-center gap-3 mb-4" aria-hidden="true">
-          <span className="section-number">04</span>
-          <div className="flex-1 h-px bg-border" />
-        </div>
-
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-          className="mb-10"
-        >
-          <h2 className="text-h2-mobile md:text-h2 font-heading gradient-text">
-            Proyectos
-          </h2>
-          <p className="mt-4 text-body-lg text-slate-600 dark:text-text-secondary max-w-2xl mx-auto">
-            Una selección de los proyectos que he diseñado, desarrollado y puesto en producción.
-          </p>
-        </motion.div>
-
-        {/* Filter bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-8 flex flex-wrap justify-center gap-2"
-          role="tablist"
-          aria-label="Filtrar proyectos"
-        >
-          {filters.map((f) => (
-            <button
-              key={f.key}
-              role="tab"
-              aria-selected={activeFilter === f.key}
-              onClick={() => setActiveFilter(f.key)}
-              className={`
-                px-5 py-2 rounded-full font-mono text-body-sm font-medium
-                border transition-all duration-300
-                ${
-                  activeFilter === f.key
-                    ? 'bg-primary text-white border-primary shadow-glow-sm'
-                    : 'bg-slate-100 dark:bg-surface text-slate-600 dark:text-text-secondary border-slate-200 dark:border-border hover:border-primary/30 hover:text-slate-900 dark:hover:text-text-primary'
-                }
-              `}
-            >
-              {f.label}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Project grid */}
-        <motion.div
-          layout
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
-        >
-          <AnimatePresence mode="popLayout">
-            {filtered.map((project, index) => (
-              <ProjectCard key={project.id} project={project} accentColor={ACCENT_COLORS[index % ACCENT_COLORS.length]} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-    </section>
+    <span className="inline-flex items-center gap-1.5 font-mono text-caption text-live">
+      <span className="h-1.5 w-1.5 rounded-full bg-live" aria-hidden="true" />
+      En producción
+    </span>
   );
 }
 
-function ProjectCard({ project, accentColor }: { project: Project; accentColor: string }) {
-  const [expanded, setExpanded] = useState(false);
-  const status = statusConfig[project.status] ?? statusConfig.active;
-  const imageUrl =
-    project.images?.logo || project.images?.ogImage || project.images?.hero || null;
-  const extraTechCount = Math.max(0, project.techStack.length - MAX_VISIBLE_TECH);
-  const visibleTech = project.techStack.slice(0, MAX_VISIBLE_TECH);
-  const isTier1 = project.tier === 1;
+function ProjectLogo({ project }: { project: Project }) {
+  const logo = project.images.logo;
+  return (
+    <div className="flex h-14 w-14 flex-none items-center justify-center overflow-hidden rounded-sm border border-line bg-logo-tile">
+      {logo ? (
+        <img src={logo} alt="" width={56} height={56} loading="lazy" decoding="async" className="h-full w-full object-contain p-1.5" />
+      ) : (
+        <span className="font-display text-h3 text-fg-subtle" aria-hidden="true">
+          {project.name.charAt(0)}
+        </span>
+      )}
+    </div>
+  );
+}
+
+/** Primary live link ("Ver sitio") and Play Store link; rendered only when they exist. */
+function ProjectLinks({ project, size }: { project: Project; size: 'lg' | 'sm' }) {
+  const playStore = playStoreUrl(project);
+  if (!project.url && !playStore) return null;
+
+  const newTab = <span className="sr-only"> (abre en una pestaña nueva)</span>;
+  const primaryClass = size === 'lg' ? 'btn-primary' : 'link inline-flex items-center gap-1 text-body-sm font-medium';
+  const secondaryClass = size === 'lg' ? 'btn-secondary' : 'link inline-flex items-center gap-1 text-body-sm font-medium';
 
   return (
-    <motion.article
-      layout
-      variants={staggerItem}
-      initial="hidden"
-      animate="visible"
-      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-      className={`
-        glass-card card-accented group relative flex flex-col overflow-hidden
-        transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-md
-        ${isTier1 ? 'lg:col-span-1' : ''}
-      `}
-      style={{ '--card-accent': accentColor, transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' } as React.CSSProperties}
-    >
-      {/* Image / Placeholder area */}
-      <div className="relative h-44 md:h-48 overflow-hidden">
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={`${project.name} preview`}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500
-              group-hover:scale-105"
-          />
-        ) : (
-          <div
-            className="flex h-full w-full items-center justify-center
-              bg-gradient-to-br from-slate-100 dark:from-bg-elevated via-slate-50 dark:via-bg-base to-primary/10"
-            aria-hidden="true"
-          >
-            <span className="text-display-mobile font-heading text-primary/20 select-none">
-              {getInitials(project.name)}
-            </span>
-          </div>
-        )}
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+      {project.url && (
+        <a href={project.url} target="_blank" rel="noopener noreferrer" className={primaryClass}>
+          Ver sitio
+          {size === 'lg' && <span className="font-mono text-caption opacity-70">{hostname(project.url)}</span>}
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          <span className="sr-only">: {project.name}</span>
+          {newTab}
+        </a>
+      )}
+      {playStore && (
+        <a href={playStore} target="_blank" rel="noopener noreferrer" className={secondaryClass}>
+          <Smartphone className="h-4 w-4" aria-hidden="true" />
+          Google Play
+          <span className="sr-only">: {project.name}</span>
+          {newTab}
+        </a>
+      )}
+    </div>
+  );
+}
 
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-white/90 dark:from-bg-base/90 via-white/20 dark:via-bg-base/20 to-transparent"
-          aria-hidden="true"
-        />
-
-        {/* Status badge */}
-        <div className="absolute top-3 right-3">
-          <span
-            className={`
-              inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full
-              font-mono text-caption border backdrop-blur-sm
-              ${status.color}
-            `}
-          >
-            <span className={`h-1.5 w-1.5 rounded-full ${status.dot} animate-glow-pulse`} />
-            {status.label}
-          </span>
+function FeaturedProject({ project }: { project: Project }) {
+  const relation = getProjectRelation(project);
+  return (
+    <li className="flex">
+      <article className="flex w-full flex-col border border-line bg-surface p-5 transition-colors duration-200 hover:border-line-strong sm:p-6">
+        <div className="flex items-start justify-between gap-4">
+          <ProjectLogo project={project} />
+          <StatusLabel status={project.status} />
         </div>
 
-        {/* Employer / Client badge */}
-        {(project.employer || project.client) && (
-          <div className="absolute top-3 left-3">
-            <span
-              className="inline-block px-2.5 py-1 rounded-full font-mono text-caption
-                text-accent-cyan border border-accent-cyan/30 bg-accent-cyan/10
-                backdrop-blur-sm"
-            >
-              {project.employer ?? project.client}
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* Card body */}
-      <div className="flex flex-1 flex-col gap-3 p-5 md:p-6">
-        {/* Name + Architecture */}
-        <div>
-          <h3 className="text-h3 font-heading text-slate-900 dark:text-text-primary leading-tight group-hover:text-primary-light transition-colors duration-300">
-            {project.name}
-          </h3>
-          <span className="mt-1 inline-block font-mono text-caption text-slate-500 dark:text-text-muted bg-slate-100 dark:bg-surface border border-slate-200 dark:border-border rounded-md px-2 py-0.5">
-            {project.architecture}
-          </span>
-        </div>
-
-        {/* Description */}
-        <p className="text-body-sm text-slate-600 dark:text-text-secondary line-clamp-3">
-          {project.description}
+        <p className={`mt-6 font-mono text-caption ${relation.kind === 'client' ? 'text-accent' : 'text-fg-subtle'}`}>
+          {relation.label}
         </p>
+        <h4 className="mt-1 font-display text-h3 text-fg">{project.name}</h4>
+        <p className="mt-3 text-body-sm text-fg-muted">{project.description}</p>
 
-        {/* Tech stack */}
-        <div className="flex flex-wrap gap-1.5" aria-label="Tech stack">
-          {visibleTech.map((tech) => (
-            <span
-              key={tech}
-              className="font-mono text-caption text-slate-600 dark:text-text-secondary bg-slate-100 dark:bg-surface
-                border border-slate-200 dark:border-border rounded-md px-2 py-0.5
-                hover:text-primary-light hover:border-primary/30
-                transition-colors duration-200"
-            >
-              {tech}
-            </span>
+        <ul className="mt-4 space-y-1.5">
+          {project.highlights.map((highlight) => (
+            <li key={highlight} className="flex gap-2.5 text-body-sm text-fg">
+              <span className="mt-[0.6em] h-px w-3 flex-none bg-accent" aria-hidden="true" />
+              {highlight}
+            </li>
           ))}
-          {extraTechCount > 0 && (
-            <span className="font-mono text-caption text-primary-light bg-primary/10 border border-primary/20 rounded-md px-2 py-0.5">
-              +{extraTechCount} más
-            </span>
-          )}
+        </ul>
+
+        <div className="mt-5">
+          <TagList items={project.techStack} label={`Tecnologías de ${project.name}`} limit={MAX_TAGS} />
         </div>
 
-        {/* Highlights */}
-        {project.highlights.length > 0 && (
-          <div className="mt-auto space-y-1.5 pt-2">
-            {project.highlights.slice(0, 2).map((hl, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <Sparkles
-                  size={14}
-                  className="mt-0.5 flex-shrink-0 text-primary-light"
-                  aria-hidden="true"
-                />
-                <span className="text-caption text-slate-600 dark:text-text-secondary leading-snug line-clamp-2">
-                  {hl}
-                </span>
-              </div>
+        <details className="group mt-4">
+          <summary className="inline-flex min-h-[44px] cursor-pointer list-none items-center gap-1.5 text-body-sm text-fg-muted transition-colors hover:text-fg [&::-webkit-details-marker]:hidden">
+            <ChevronDown className="h-4 w-4 transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
+            Características
+          </summary>
+          <ul className="space-y-1 pb-2 pl-6 text-body-sm text-fg-muted">
+            {project.features.map((feature) => (
+              <li key={feature} className="list-disc marker:text-fg-subtle">
+                {feature}
+              </li>
             ))}
-          </div>
-        )}
+          </ul>
+        </details>
 
-        {/* Features toggle */}
-        {project.features.length > 0 && (
-          <div className="pt-1">
-            <button
-              onClick={() => setExpanded(!expanded)}
-              className="inline-flex items-center gap-1.5 text-caption font-medium
-                text-primary-light hover:text-primary transition-colors duration-200"
-            >
-              <ChevronDown
-                size={14}
-                className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
-              />
-              {expanded ? 'Ocultar' : 'Ver'} características
-            </button>
-            <AnimatePresence>
-              {expanded && (
-                <motion.ul
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden mt-2 space-y-1"
-                >
-                  {project.features.map((feat, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                      className="flex items-start gap-2"
-                    >
-                      <Check size={12} className="mt-0.5 flex-shrink-0 text-accent-green" />
-                      <span className="text-caption text-slate-600 dark:text-text-secondary">
-                        {feat}
-                      </span>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              )}
-            </AnimatePresence>
-          </div>
-        )}
+        <div className="mt-auto pt-5">
+          <ProjectLinks project={project} size="lg" />
+        </div>
+      </article>
+    </li>
+  );
+}
 
-        {/* Action buttons */}
-        {(project.url || project.playStore) && (
-          <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-200 dark:border-border mt-auto">
-            {project.url && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg
-                  font-mono text-body-sm font-medium
-                  bg-primary/10 text-primary-light border border-primary/20
-                  hover:bg-primary/20 hover:border-primary/40
-                  transition-all duration-200 group/link"
-                aria-label={`Ver sitio de ${project.name}`}
-              >
-                <ExternalLink size={14} aria-hidden="true" />
-                Ver sitio
-                <ChevronRight
-                  size={14}
-                  className="transition-transform duration-200 group-hover/link:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </a>
-            )}
-            {project.playStore && (
-              <a
-                href={project.playStore.startsWith('http') ? project.playStore : '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg
-                  font-mono text-body-sm font-medium
-                  bg-accent-green/10 text-accent-green border border-accent-green/20
-                  hover:bg-accent-green/20 hover:border-accent-green/40
-                  transition-all duration-200"
-                aria-label={`Ver ${project.name} en Google Play`}
-              >
-                <Smartphone size={14} aria-hidden="true" />
-                Google Play
-              </a>
-            )}
-          </div>
-        )}
-      </div>
-    </motion.article>
+function OtherProject({ project }: { project: Project }) {
+  const relation = getProjectRelation(project);
+  return (
+    <li className="border-b border-line py-8">
+      <article>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <h4 className="font-display text-h3 text-fg">{project.name}</h4>
+          <StatusLabel status={project.status} />
+        </div>
+        <p className="mt-1 font-mono text-caption text-fg-subtle">
+          {relation.label} · {project.architecture}
+        </p>
+        <p className="mt-3 max-w-2xl text-body-sm text-fg-muted">{project.description}</p>
+        <div className="mt-4">
+          <TagList items={project.techStack} label={`Tecnologías de ${project.name}`} limit={MAX_TAGS + 1} />
+        </div>
+        <div className="mt-4">
+          <ProjectLinks project={project} size="sm" />
+        </div>
+      </article>
+    </li>
+  );
+}
+
+/** Tier 1 (live, in production) as cards; tier 2 (other / experimental) as a compact list. */
+export default function Projects({ projects }: ProjectsProps) {
+  const featured = projects.filter((p) => p.tier === 1);
+  const others = projects.filter((p) => p.tier !== 1);
+
+  return (
+    <Section
+      id="projects"
+      index="04"
+      title="Proyectos"
+      intro="Primero lo que está en producción: trabajo para clientes, en relación de dependencia y productos propios. Después, otros proyectos y experimentos."
+    >
+      <h3 className="eyebrow">En producción · {featured.length}</h3>
+      <ul className="mt-5 grid gap-4 sm:grid-cols-2" role="list">
+        {featured.map((project) => (
+          <FeaturedProject key={project.id} project={project} />
+        ))}
+      </ul>
+
+      {others.length > 0 && (
+        <>
+          <h3 className="eyebrow mt-16">Otros proyectos y experimentos · {others.length}</h3>
+          <ul className="mt-2 border-t border-line" role="list">
+            {others.map((project) => (
+              <OtherProject key={project.id} project={project} />
+            ))}
+          </ul>
+        </>
+      )}
+    </Section>
   );
 }
