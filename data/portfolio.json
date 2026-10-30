@@ -198,13 +198,11 @@
     ],
     "other": [
       "SOAP/mTLS",
-      "Firma digital XML",
       "Códigos QR",
       "Socket.IO",
       "WebSocket (STOMP)",
       "BullMQ",
-      "React Flow",
-      "ELK.js"
+      "React Flow"
     ],
     "ai": [
       "Claude Code (skills, MCP, subagentes)",
